@@ -144,8 +144,8 @@ body {
 }
 
 .hero-pizza {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   margin-bottom: 0;
   filter: drop-shadow(0 8px 24px rgba(242, 70, 56, 0.18));
   animation: float 4s ease-in-out infinite;
@@ -372,12 +372,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0;
+  gap: 0.25rem;
+  padding: 0.25rem 0;
 }
 
 .activity-image-wrap {
-  height: 200px;
+  height: 170px;
   border-radius: 20px;
   overflow: hidden;
   background: var(--off-white);
@@ -396,20 +396,20 @@ body {
 .activity-title {
   font-family: 'Libre Baskerville', serif;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: var(--dark);
 }
 
 .activity-desc {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--gray);
   max-width: 400px;
-  line-height: 1.7;
+  line-height: 1.5;
   margin: 0;
 }
 
 .activity-date {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--red);
   font-family: 'Libre Baskerville', serif;
   font-weight: 700;
@@ -417,7 +417,7 @@ body {
 }
 
 .activity-desc-box {
-  height: 5.1em;
+  height: 4.5em;
   overflow: hidden;
   display: flex;
   align-items: flex-start;
@@ -428,7 +428,7 @@ body {
 .dots {
   display: flex;
   gap: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .dot {
