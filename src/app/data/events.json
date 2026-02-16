@@ -1,0 +1,50 @@
+[
+  {
+    "image": "/events/mixer.png",
+    "title": "Tech and Startups Pizza Mixer",
+    "description": "A dinner meetup at Greenbelt about all things tech and startups!",
+    "date": "October 2025"
+  },
+  {
+    "image": "/events/2026townhall.png",
+    "title": "2026 Town Hall",
+    "description": "New year, new... crust? 🍕 Whether you're sticking to your resolutions or you've already accepted defeat, come hang out with us! Let's talk about our goals, the habits we're leaving in 2025, and what's in the oven for the year ahead.",
+    "date": "January 2026"
+  },
+  {
+    "image": "/events/novpizzascrum.png",
+    "title": "November Pizza Scrum",
+    "description": "A quick catchup call on what we've been up to leading to the end of the year.",
+    "date": "November 2025"
+  },
+  {
+    "image": "/events/augustpizzascrum.png",
+    "title": "August Pizza Scrum",
+    "description": "Early into the creation of the community, we gathered to share our progress and plans for the next few months",
+    "date": "August 2025"
+  },
+  {
+    "image": "/events/julypizzascrum.png",
+    "title": "July Pizza Scrum",
+    "description": "The first ever pizza scrum!",
+    "date": "July 2025"
+  },
+  {
+    "image": "/events/bedrotparty.png",
+    "title": "Bedrot Party",
+    "description": "A quick midweek tambay session",
+    "date": "July 2025"
+  },
+  {
+    "image": "/events/livecoworking.png",
+    "title": "Live Coworking",
+    "description": "A short coworking session on Discord",
+    "date": "July 2025"
+  },
+  {
+    "image": "/events/virtualpizzaparty.png",
+    "title": "Virtual Pizza Party",
+    "description": "A virtual pizza party to celebrate the birth of Pizza and Friends!",
+    "date": "July 2025"
+  }
+]
