@@ -13,6 +13,10 @@ html, body {
   cursor: url('../../public/cursor.png'), auto;
 }
 
+a, button, [role="button"], input[type="submit"], input[type="button"], select, label[for], .pointer, [onclick] {
+  cursor: url('../../public/cursor.png'), pointer !important;
+}
+
 @theme inline {
   --color-background: var(--white);
   --color-foreground: var(--dark);
