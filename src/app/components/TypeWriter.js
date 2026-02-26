@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 
-const WORDS = ["pizza", "friends"];
+const WORDS = ["pizza"];
 const TYPE_SPEED = 130;
 const DELETE_SPEED = 70;
 const PAUSE_AFTER_TYPE = 2200;

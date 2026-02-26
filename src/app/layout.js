@@ -49,6 +49,18 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} ${libreBaskerville.variable} antialiased`}
       >
         {children}
+        <footer className="footer">
+          <p>
+            © {new Date().getFullYear()} Pizza &amp; Friends ·{" "}
+            <a href="https://discord.gg/TrycsErM4R" target="_blank" rel="noopener noreferrer">
+              Discord
+            </a>{" "}
+            ·{" "}
+            <a href="https://instagram.com/pizzaplusfriends" target="_blank" rel="noopener noreferrer">
+              Instagram
+            </a>
+          </p>
+        </footer>
       </body>
     </html>
   );
