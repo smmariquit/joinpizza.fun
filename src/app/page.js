@@ -112,6 +112,11 @@ export default function Home() {
           <span key={i} className={`dot ${i === slideIndex + 1 ? "dot-active" : ""}`} />
         ))}
       </div>
+
+      {/* Contact */}
+      <p className="contact-line">
+        Questions? Contact <a href="mailto:johnyumul.ph@gmail.com">John</a> or <a href="mailto:semariquit@gmail.com">Simonee</a>
+      </p>
     </div>
   );
 }
