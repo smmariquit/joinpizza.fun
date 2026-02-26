@@ -60,7 +60,9 @@ export default function Home() {
             <>
               <div className="hero-title">
                 <div className="hero-title-text">
-                  <TypeWriter />
+                  <TypeWriter />{" "}
+                  <span className="hero-ampersand">&amp;</span>{" "}
+                  friends
                 </div>
               </div>
 
