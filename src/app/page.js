@@ -44,6 +44,11 @@ export default function Home() {
             </a>
           </div>
         </div>
+
+        <div className="scroll-indicator">
+          <span>scroll down</span>
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+        </div>
       </div>
 
       {/* Activities Grid */}
