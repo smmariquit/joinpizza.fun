@@ -1,5 +1,11 @@
 [
   {
+    "image": "/events/hackandyap.jpg",
+    "title": "Hack & Yap by Pizza & GitHub",
+    "description": "slides party, stupid ideas hackathon, food, and fun",
+    "date": "June 2026"
+  },
+  {
     "image": "/events/mixer.png",
     "title": "Tech and Startups Pizza Mixer",
     "description": "A dinner meetup at Greenbelt about all things tech and startups!",
