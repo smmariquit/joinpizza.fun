@@ -10,7 +10,7 @@ export default function Home() {
         <div className="hero-pizza-wrap">
           <Image
             className="hero-pizza"
-            src="/pizza_1f355.png"
+            src="/pizza_1f355.webp"
             alt="🍕"
             width={120}
             height={120}
