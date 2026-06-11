@@ -1,3 +1,5 @@
+// src/app/page.js
+
 import Image from "next/image";
 import TypeWriter from "./components/TypeWriter";
 import ACTIVITIES from "./data/events.json";

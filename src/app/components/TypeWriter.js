@@ -1,3 +1,5 @@
+// src/app/components/TypeWriter.js
+
 "use client";
 
 import { useState, useEffect, useCallback } from "react";

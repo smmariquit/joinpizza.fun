@@ -1,3 +1,5 @@
+// src/app/layout.js
+
 import { Geist, Geist_Mono, Libre_Baskerville } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
