@@ -5,10 +5,12 @@
 :root {
   --red: #f24638;
   --white: #ffffff;
-  --off-white: #faf8f6;
-  --dark: #1a1a1a;
-  --gray: #000;
-  --light-gray: #e8e4e0;
+  --off-white: #faf4ee;
+  --dark: #2c1810;
+  --gray: #3d2b1f;
+  --light-gray: #e8ddd4;
+  --cream: #fff8f0;
+  --golden: #d4943a;
 }
 
 html, body {
@@ -34,7 +36,7 @@ a, button, [role="button"], input[type="submit"], input[type="button"], select, 
 
 body {
   background: var(--white);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
   color: var(--dark);
   font-family: var(--font-sans), 'Helvetica Neue', Arial, sans-serif;
   overflow-x: hidden;
@@ -123,7 +125,7 @@ body {
 .marquee-track {
   display: flex;
   gap: 1.5rem;
-  animation: marqueeScroll 40s linear infinite;
+  animation: marqueeScroll 120s linear infinite;
   width: max-content;
   align-items: center;
 }
@@ -143,24 +145,7 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.hero-pizza-wrap {
-  margin-bottom: 2rem;
-  z-index: 10;
-  animation: fadeInUp 0.6s ease-out both;
-}
 
-.hero-pizza {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 0;
-  filter: drop-shadow(0 8px 24px rgba(242, 70, 56, 0.18));
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(3deg); }
-}
 
 /* ─── GIANT TEXT ─── */
 .hero-title {
@@ -202,12 +187,11 @@ body {
 }
 
 /* ─── CTA ─── */
-.cta-row {
+.cta-stack {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  gap: 0.75rem;
   position: relative;
   z-index: 10;
   animation: fadeInUp 0.6s ease-out 0.45s both;
@@ -217,64 +201,31 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.85rem 2rem;
+  padding: 1rem 2.5rem;
   background: var(--red);
-  color: var(--white);
+  color: #fff;
   font-family: 'Libre Baskerville', serif;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   border: none;
   border-radius: 100px;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.25s;
-  box-shadow: 0 4px 16px rgba(242, 70, 56, 0.25);
+  box-shadow: 0 4px 16px rgba(242, 70, 56, 0.3);
 }
 
 .cta-primary:hover {
   background: #d93a2e;
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(242, 70, 56, 0.35);
+  box-shadow: 0 6px 24px rgba(242, 70, 56, 0.4);
 }
 
-.cta-button-wrap {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.75rem;
-}
 
-.discord-count {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--gray);
-  opacity: 0.8;
-  font-family: var(--font-geist-sans), sans-serif;
-  animation: fadeInUp 0.4s ease-out;
-}
-
-.online-dot {
-  width: 8px;
-  height: 8px;
-  background-color: #23a559;
-  border-radius: 50%;
-  display: inline-block;
-  box-shadow: 0 0 8px rgba(35, 165, 89, 0.6);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(35, 165, 89, 0.4); }
-  70% { box-shadow: 0 0 0 6px rgba(35, 165, 89, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(35, 165, 89, 0); }
-}
 
 .social-icons {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   align-items: center;
 }
 
@@ -282,12 +233,12 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   border: 1.5px solid var(--light-gray);
-  background: var(--white);
-  color: var(--dark);
+  background: var(--cream);
+  color: var(--gray);
   transition: all 0.25s;
 }
 
@@ -449,5 +400,18 @@ body {
 
   .hero-title {
     white-space: normal;
+  }
+}
+
+/* ─── ACCESSIBILITY ─── */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation-play-state: paused;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
