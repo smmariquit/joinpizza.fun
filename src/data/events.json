@@ -1,15 +1,15 @@
 [
   {
-    "image": "/events/hackandyap.webp",
-    "title": "Hack & Yap by Pizza & GitHub",
-    "description": "slides party, stupid ideas hackathon, food, and fun",
-    "date": "June 2026"
+    "image": "/events/karaoke-cubao.webp",
+    "title": "Karaoke @ Cubao",
+    "description": "A karaoke night out with the crew in Cubao!",
+    "date": "April 2026"
   },
   {
-    "image": "/events/mixer.webp",
-    "title": "Tech and Startups Pizza Mixer",
-    "description": "A dinner meetup at Greenbelt about all things tech and startups!",
-    "date": "October 2025"
+    "video": "/irl/irl-vid-event-1.mp4",
+    "title": "Pizza & Friends x GitHub: Hack & Yap",
+    "description": "A collab event with GitHub! Hacking, yapping, and pizza.",
+    "date": "February 2026"
   },
   {
     "image": "/events/2026townhall.webp",
@@ -22,6 +22,12 @@
     "title": "November Pizza Scrum",
     "description": "A quick catchup call on what we've been up to leading to the end of the year.",
     "date": "November 2025"
+  },
+  {
+    "image": "/events/mixer.webp",
+    "title": "Tech and Startups Pizza Mixer",
+    "description": "A dinner meetup at Greenbelt about all things tech and startups!",
+    "date": "October 2025"
   },
   {
     "image": "/events/augustpizzascrum.webp",

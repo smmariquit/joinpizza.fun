@@ -1,0 +1,24 @@
+---
+---
+
+<span class="discord-count" id="discord-count" style="display: none;">
+  <span class="online-dot"></span>
+  <span id="discord-online-number"></span> online
+</span>
+
+<script>
+  // Runs entirely on the client, zero framework overhead!
+  fetch('https://discord.com/api/v9/invites/TrycsErM4R?with_counts=true')
+    .then(res => res.json())
+    .then(data => {
+      if (data && data.approximate_presence_count) {
+        const countSpan = document.getElementById('discord-online-number');
+        const container = document.getElementById('discord-count');
+        if (countSpan && container) {
+          countSpan.textContent = data.approximate_presence_count;
+          container.style.display = 'inline-flex'; // show when ready
+        }
+      }
+    })
+    .catch(err => console.error("Error fetching Discord count:", err));
+</script>
