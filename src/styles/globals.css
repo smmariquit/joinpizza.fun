@@ -5,7 +5,7 @@
 :root {
   --red: #f24638;
   --white: #ffffff;
-  --off-white: #faf4ee;
+  --off-white: #ebdccc;
   --dark: #2c1810;
   --gray: #3d2b1f;
   --light-gray: #e8ddd4;
@@ -35,7 +35,7 @@ a, button, [role="button"], input[type="submit"], input[type="button"], select, 
 }
 
 body {
-  background-color: var(--white);
+  background-color: var(--off-white);
   color: var(--dark);
   font-family: var(--font-sans), 'Helvetica Neue', Arial, sans-serif;
   overflow-x: hidden;
@@ -293,8 +293,8 @@ body::before {
 
 .polaroid {
   background: var(--white);
-  padding: 12px 12px 40px 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  padding: 0.8rem 0.8rem 3rem 0.8rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.08);
   position: relative;
   transform: rotate(var(--rotation, 0deg));
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
