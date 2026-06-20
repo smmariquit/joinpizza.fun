@@ -165,7 +165,7 @@ body::before {
 .hero-title {
   font-family: 'Libre Baskerville', serif;
   font-weight: 700;
-  color: var(--dark);
+  color: var(--red);
   line-height: 1;
   letter-spacing: -0.03em;
   white-space: nowrap;
@@ -180,7 +180,7 @@ body::before {
   font-family: 'Libre Baskerville', serif;
   font-weight: 400;
   font-style: italic;
-  color: var(--dark);
+  color: var(--red);
   font-size: clamp(2.5rem, 5vw, 5rem);
   margin: 0 0.15em;
   vertical-align: middle;
