@@ -54,13 +54,26 @@ import ACTIVITIES from '../data/events.json';
         {ACTIVITIES.map((activity, i) => (
           <div class="activity-card">
             <div class="activity-image-wrap">
-              <img
-                src={activity.image}
-                alt={activity.title}
-                width="280"
-                height="280"
-                class="activity-image"
-              />
+              {activity.image ? (
+                <img
+                  src={activity.image}
+                  alt={activity.title}
+                  width="280"
+                  height="280"
+                  class="activity-image"
+                />
+              ) : activity.video ? (
+                <video
+                  src={activity.video}
+                  width="280"
+                  height="280"
+                  class="activity-image"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                ></video>
+              ) : null}
             </div>
             <div class="activity-info">
               <h3 class="activity-title">{activity.title}</h3>

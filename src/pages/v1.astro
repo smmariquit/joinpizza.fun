@@ -56,13 +56,26 @@ import ACTIVITIES from '../data/events.json';
         <div class="slide" id={`slide-${i + 1}`} style="display: none;">
           <div class="activity-slide">
             <div class="activity-image-wrap">
-              <img
-                src={activity.image}
-                alt={activity.title}
-                width="280"
-                height="280"
-                class="activity-image"
-              />
+              {activity.image ? (
+                <img
+                  src={activity.image}
+                  alt={activity.title}
+                  width="280"
+                  height="280"
+                  class="activity-image"
+                />
+              ) : activity.video ? (
+                <video
+                  src={activity.video}
+                  width="280"
+                  height="280"
+                  class="activity-image"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                ></video>
+              ) : null}
             </div>
             <h2 class="activity-title">{activity.title}</h2>
             <span class="activity-date">{activity.date}</span>
