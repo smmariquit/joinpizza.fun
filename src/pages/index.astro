@@ -56,7 +56,7 @@ const irlFiles = fs.readdirSync(irlDir)
               <div class="polaroid marquee-photo" style={`--rotation: ${rot}deg`}>
                 <div class="polaroid-image-wrap">
                   {isVideo ? (
-                    <video tabindex="-1" src={`/irl/${file}`} autoplay loop muted playsinline class="polaroid-video"></video>
+                    <video tabindex="-1" src={`/irl/${file}`} autoplay loop muted playsinline class="polaroid-video" aria-hidden="true"></video>
                   ) : (
                     <img src={`/irl/${file}`} alt="" width="220" height="220" class="polaroid-image" loading="lazy" />
                   )}
@@ -72,7 +72,7 @@ const irlFiles = fs.readdirSync(irlDir)
               <div class="polaroid marquee-photo" style={`--rotation: ${rot}deg`}>
                 <div class="polaroid-image-wrap">
                   {isVideo ? (
-                    <video tabindex="-1" src={`/irl/${file}`} autoplay loop muted playsinline class="polaroid-video"></video>
+                    <video tabindex="-1" src={`/irl/${file}`} autoplay loop muted playsinline class="polaroid-video" aria-hidden="true"></video>
                   ) : (
                     <img src={`/irl/${file}`} alt="" width="220" height="220" class="polaroid-image" loading="lazy" />
                   )}
@@ -106,7 +106,12 @@ const irlFiles = fs.readdirSync(irlDir)
                     muted
                     playsinline
                     class="polaroid-video"
-                  ></video>
+                    aria-label={activity.title}
+                  >
+                    {activity.captions && (
+                      <track kind="captions" src={activity.captions} srclang="en" label="English" default />
+                    )}
+                  </video>
                 ) : (
                   <img
                     src={activity.image}

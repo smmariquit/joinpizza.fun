@@ -75,7 +75,12 @@ import ACTIVITIES from '../data/events.json';
                   loop
                   muted
                   playsinline
-                ></video>
+                  aria-label={activity.title}
+                >
+                  {activity.captions && (
+                    <track kind="captions" src={activity.captions} srclang="en" label="English" default />
+                  )}
+                </video>
               ) : null}
             </div>
             <h2 class="activity-title">{activity.title}</h2>

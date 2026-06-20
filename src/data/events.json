@@ -7,6 +7,7 @@
   },
   {
     "video": "/irl/irl-vid-event-1.mp4",
+    "captions": "/irl/irl-vid-event-1.vtt",
     "title": "Pizza & Friends x GitHub: Hack & Yap",
     "description": "A collab event with GitHub! Hacking, yapping, and pizza.",
     "date": "February 2026"
