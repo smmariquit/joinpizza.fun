@@ -5,7 +5,7 @@
 :root {
   --red: #f24638;
   --white: #ffffff;
-  --off-white: #ebdccc;
+  --off-white: #f4eee6;
   --dark: #2c1810;
   --gray: #3d2b1f;
   --light-gray: #e8ddd4;
@@ -35,7 +35,7 @@ a, button, [role="button"], input[type="submit"], input[type="button"], select, 
 }
 
 body {
-  background-color: var(--off-white);
+  background-color: var(--white);
   color: var(--dark);
   font-family: var(--font-sans), 'Helvetica Neue', Arial, sans-serif;
   overflow-x: hidden;
@@ -43,7 +43,11 @@ body {
   position: relative;
 }
 
-body::before {
+body.theme-v3 {
+  background-color: var(--off-white);
+}
+
+body.theme-v3::before {
   content: "";
   position: fixed;
   top: 0;
@@ -194,7 +198,7 @@ body::before {
   color: var(--gray);
   max-width: 480px;
   line-height: 1.6;
-  margin: 0 auto 1.25rem;
+  margin: 0 auto 2.5rem;
   position: relative;
   z-index: 10;
   animation: fadeInUp 0.6s ease-out 0.3s both;

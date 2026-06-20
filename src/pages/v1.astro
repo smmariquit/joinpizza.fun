@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import ACTIVITIES from '../data/events.json';
 ---
 
-<Layout title="v1.0.0 | Pizza & Friends" description="The Slider. The initial launch.">
+<Layout title="v1.0.0 | Pizza & Friends" description="The Slider. The initial launch." theme="v1">
   <div class="viewport-center">
     <!-- Pizza icon -->
     <button id="next-btn" class="pizza-button" aria-label="Next slide">
@@ -83,7 +83,7 @@ import ACTIVITIES from '../data/events.json';
     </div>
 
     <div style="margin-top: 4rem;">
-      <a href="/archive" style="color: var(--gray); font-size: 1.1rem; text-decoration: none; font-weight: 600;">Back to Archive</a>
+      <a href="/archive" style="background: var(--light-gray); color: var(--dark); padding: 0.6rem 1.2rem; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;" onmouseover="this.style.background='#d8ccc3'" onmouseout="this.style.background='var(--light-gray)'">&larr; Back to Archive</a>
     </div>
   </div>
 </Layout>

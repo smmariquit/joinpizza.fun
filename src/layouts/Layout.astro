@@ -4,11 +4,13 @@ import '../styles/globals.css';
 interface Props {
   title?: string;
   description?: string;
+  theme?: 'v1' | 'v2' | 'v3';
 }
 
 const { 
   title = "Pizza & Friends", 
-  description = "Unexpectedly a tech community! From dinner meetups to Discord calls, we make cool stuff and try not to take it too seriously." 
+  description = "Unexpectedly a tech community! From dinner meetups to Discord calls, we make cool stuff and try not to take it too seriously.",
+  theme = 'v3'
 } = Astro.props;
 ---
 
@@ -50,7 +52,7 @@ const {
       }
     </style>
   </head>
-  <body class="antialiased">
+  <body class={['antialiased', theme === 'v3' && 'theme-v3'].filter(Boolean).join(' ')}>
     <slot />
   </body>
 </html>
