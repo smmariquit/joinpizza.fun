@@ -3,7 +3,7 @@
 @import "tailwindcss";
 
 :root {
-  --red: #f24638;
+  --red: #c92a1e;
   --white: #ffffff;
   --off-white: #f4eee6;
   --dark: #2c1810;
@@ -230,13 +230,13 @@ body.theme-v3::before {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.25s;
-  box-shadow: 0 4px 16px rgba(242, 70, 56, 0.3);
+  box-shadow: 0 4px 16px rgba(201, 42, 30, 0.3);
 }
 
 .cta-primary:hover {
-  background: #d93a2e;
+  background: #a82015;
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(242, 70, 56, 0.4);
+  box-shadow: 0 6px 24px rgba(201, 42, 30, 0.4);
 }
 
 
@@ -422,6 +422,23 @@ body.theme-v3::before {
 }
 
 /* ─── ACCESSIBILITY ─── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--red);
+  color: #fff;
+  padding: 12px 24px;
+  z-index: 10000;
+  transition: top 0.2s;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation-play-state: paused;
