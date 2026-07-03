@@ -10,7 +10,7 @@ const ROTATIONS = [-3, 2.5, -1.5, 3, -2, 1.5, 4, -2.5, 2, -3.5, 1, -4];
 // Dynamically gather all images & videos from /irl for the marquee
 const irlDir = path.join(process.cwd(), 'public/irl');
 const irlFiles = fs.readdirSync(irlDir)
-  .filter(f => /\.(webp|mp4)$/i.test(f))
+  .filter(f => /\.webp$/i.test(f)) // photos only — no videos in the marquee (performance + dedup)
   .sort(() => 0.5 - Math.random()); // shuffle for variety
 ---
 
@@ -48,34 +48,39 @@ const irlFiles = fs.readdirSync(irlDir)
       <!-- Horizontal Marquee with ALL /irl photos -->
       <div class="hero-marquee" role="img" aria-label="A scrolling gallery of community photos from Pizza & Friends meetups and events">
         <div class="marquee-track" aria-hidden="true">
-          {/* First set */}
+          {/* First set — photos only */}
           {irlFiles.map((file, i) => {
             const rot = ROTATIONS[i % ROTATIONS.length];
-            const isVideo = file.endsWith('.mp4');
             return (
               <div class="polaroid marquee-photo" style={`--rotation: ${rot}deg`}>
                 <div class="polaroid-image-wrap">
-                  {isVideo ? (
-                    <video tabindex="-1" src={`/irl/${file}`} autoplay loop muted playsinline class="polaroid-video" aria-hidden="true"></video>
-                  ) : (
-                    <img src={`/irl/${file}`} alt="" width="220" height="220" class="polaroid-image" loading="lazy" />
-                  )}
+                  <img
+                    src={`/irl/${file}`}
+                    alt=""
+                    width="220"
+                    height="220"
+                    class="polaroid-image"
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                    fetchpriority={i === 0 ? 'high' : 'auto'}
+                  />
                 </div>
               </div>
             );
           })}
-          {/* Duplicate set for seamless loop */}
+          {/* Duplicate set for seamless loop — aria-hidden so screen readers don't double-read */}
           {irlFiles.map((file, i) => {
             const rot = ROTATIONS[i % ROTATIONS.length];
-            const isVideo = file.endsWith('.mp4');
             return (
-              <div class="polaroid marquee-photo" style={`--rotation: ${rot}deg`}>
+              <div class="polaroid marquee-photo" style={`--rotation: ${rot}deg`} aria-hidden="true">
                 <div class="polaroid-image-wrap">
-                  {isVideo ? (
-                    <video tabindex="-1" src={`/irl/${file}`} autoplay loop muted playsinline class="polaroid-video" aria-hidden="true"></video>
-                  ) : (
-                    <img src={`/irl/${file}`} alt="" width="220" height="220" class="polaroid-image" loading="lazy" />
-                  )}
+                  <img
+                    src={`/irl/${file}`}
+                    alt=""
+                    width="220"
+                    height="220"
+                    class="polaroid-image"
+                    loading="lazy"
+                  />
                 </div>
               </div>
             );
@@ -109,7 +114,8 @@ const irlFiles = fs.readdirSync(irlDir)
                     aria-label={activity.title}
                   >
                     {activity.captions && (
-                      <track kind="captions" src={activity.captions} srclang="en" label="English" default />
+                      // No `default` — this is a muted autoplay video; captions would auto-render on screen
+                      <track kind="captions" src={activity.captions} srclang="en" label="English" />
                     )}
                   </video>
                 ) : (
