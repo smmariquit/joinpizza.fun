@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import LegalMicroLink from '../components/LegalMicroLink.astro';
 import ACTIVITIES from '../data/events.json';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -147,6 +148,7 @@ const irlFiles = fs.readdirSync(irlDir)
       <p class="contact-line" style="margin-top: 0.5rem; font-size: 0.95em;">
         <a href="/archive">View Design Archive</a>
       </p>
+      <LegalMicroLink />
     </footer>
   </main>
 </Layout>

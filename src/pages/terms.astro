@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Terms of Use | Pizza & Friends"
+  description="Terms for using the Pizza & Friends community site."
+>
+  <main id="main-content" class="legal-page">
+    <a href="/" class="legal-back">&larr; Home</a>
+
+    <header class="legal-header">
+      <h1>Terms of Use</h1>
+      <p class="legal-lede">
+        Last updated: July 4, 2026. By using joinpizza.fun you agree to these terms.
+      </p>
+    </header>
+
+    <article class="legal-body">
+      <section>
+        <h2>About the site</h2>
+        <p>
+          Pizza &amp; Friends is an informal tech-and-dinner community run by volunteers.
+          This website is a brochure for events and links — not a platform with hosted user
+          accounts.
+        </p>
+      </section>
+
+      <section>
+        <h2>Community conduct</h2>
+        <p>
+          Real-world meetups and Discord conversations have their own community norms.
+          Be respectful. Harassment, spam, or abuse may result in removal from community spaces.
+        </p>
+      </section>
+
+      <section>
+        <h2>Content and photos</h2>
+        <p>
+          Event photos and descriptions are shared to celebrate the community. Do not reuse
+          them to misrepresent the group or impersonate organizers.
+        </p>
+      </section>
+
+      <section>
+        <h2>Acceptable use of this site</h2>
+        <ul>
+          <li>Do not attempt to disrupt hosting or probe for vulnerabilities.</li>
+          <li>Do not scrape the site aggressively or republish it as a commercial product.</li>
+          <li>External links are provided as-is; we are not responsible for third-party sites.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Disclaimer</h2>
+        <p>
+          The site is provided "as is." Event details may change. Organizers are not liable
+          for decisions you make based on information here.
+        </p>
+      </section>
+
+      <section>
+        <h2>Changes</h2>
+        <p>
+          These terms may be updated. Continued use after changes are posted constitutes
+          acceptance of the revised terms.
+        </p>
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .legal-page {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .legal-back {
+    font-family: var(--font-geist-sans);
+    font-size: 0.85rem;
+    color: var(--text-muted, #6b6560);
+    text-decoration: none;
+  }
+
+  .legal-back:hover {
+    text-decoration: underline;
+  }
+
+  .legal-header {
+    margin: 2rem 0;
+  }
+
+  .legal-header h1 {
+    font-family: var(--font-libre-baskerville);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    margin: 0 0 1rem;
+  }
+
+  .legal-lede {
+    font-family: var(--font-geist-sans);
+    line-height: 1.65;
+    color: var(--text-muted, #6b6560);
+    margin: 0;
+  }
+
+  .legal-body section {
+    margin-bottom: 1.75rem;
+  }
+
+  .legal-body h2 {
+    font-family: var(--font-libre-baskerville);
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .legal-body p,
+  .legal-body li {
+    font-family: var(--font-geist-sans);
+    line-height: 1.65;
+    color: var(--text-muted, #6b6560);
+  }
+
+  .legal-body ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+  }
+</style>
