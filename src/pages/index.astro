@@ -62,6 +62,7 @@ const irlFiles = fs.readdirSync(irlDir)
  height="220"
  class="polaroid-image"
  loading={i === 0 ? 'eager' : 'lazy'}
+ decoding="async"
  fetchpriority={i === 0 ? 'high' : 'auto'}
  />
  </div>
@@ -81,6 +82,7 @@ const irlFiles = fs.readdirSync(irlDir)
  height="220"
  class="polaroid-image"
  loading="lazy"
+ decoding="async"
  />
  </div>
  </div>
@@ -127,6 +129,7 @@ const irlFiles = fs.readdirSync(irlDir)
  height="400"
  class="polaroid-image"
  loading="lazy"
+ decoding="async"
  />
  )}
  </div>
