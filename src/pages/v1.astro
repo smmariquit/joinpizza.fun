@@ -5,7 +5,7 @@ import ACTIVITIES from '../data/events.json';
 
 <Layout title="v1.0.0 | Pizza & Friends" description="The Slider. The initial launch." theme="v1">
  <main id="main-content" class="viewport-center">
- <!, Pizza icon, >
+ <!-- Pizza icon -->
  <button id="next-btn" class="pizza-button" aria-label="Next slide">
  <img
  class="hero-pizza"
@@ -19,9 +19,9 @@ import ACTIVITIES from '../data/events.json';
  <span class="pizza-hint">tap me ↗</span>
  </button>
 
- <!, Slide container, >
+ <!-- Slide container -->
  <div class="slide-container">
- <!, Hero Slide, >
+ <!-- Hero Slide -->
  <div class="slide" id="slide-0">
  <div class="hero-title">
  <div class="hero-title-text">
@@ -53,7 +53,7 @@ import ACTIVITIES from '../data/events.json';
  </div>
  </div>
 
- <!, Activity Slides, >
+ <!-- Activity Slides -->
  {ACTIVITIES.map((activity, i) => (
  <div class="slide" id={`slide-${i + 1}`} style="display: none;">
  <div class="activity-slide">
@@ -96,7 +96,7 @@ import ACTIVITIES from '../data/events.json';
  ))}
  </div>
 
- <!, Dots indicator, >
+ <!-- Dots indicator -->
  <div class="dots">
  <span class="dot dot-active" id="dot-0"></span>
  {ACTIVITIES.map((_, i) => (
@@ -105,7 +105,7 @@ import ACTIVITIES from '../data/events.json';
  </div>
 
  <div style="margin-top: 4rem;">
- <a href="/archive" style="background: var(, light-gray); color: var(, dark); padding: 0.6rem 1.2rem; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;" onmouseover="this.style.background='#d8ccc3'" onmouseout="this.style.background='var(, light-gray)'">&larr; Back to Archive</a>
+ <a href="/archive" style="background: var(--light-gray); color: var(--dark); padding: 0.6rem 1.2rem; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;" onmouseover="this.style.background='#d8ccc3'" onmouseout="this.style.background='var(--light-gray)'">&larr; Back to Archive</a>
  </div>
  </main>
 </Layout>
@@ -149,7 +149,7 @@ import ACTIVITIES from '../data/events.json';
 
 .pizza-hint {
  font-size: 0.75rem;
- color: var(, red);
+ color: var(--red);
  font-family: 'Libre Baskerville', serif;
  font-weight: 700;
  opacity: 0.6; /* override: always show hint initially */
@@ -191,7 +191,7 @@ import ACTIVITIES from '../data/events.json';
 .hero-title-text {
  font-family: 'Libre Baskerville', serif;
  font-weight: 700;
- color: var(, dark);
+ color: var(--dark);
  line-height: 1;
  letter-spacing: -0.03em;
  white-space: nowrap;
@@ -200,7 +200,7 @@ import ACTIVITIES from '../data/events.json';
 
  /* ─── TYPED WORD ─── */
 .typed-word {
- color: var(, red);
+ color: var(--red);
  font-family: 'Libre Baskerville', serif;
  font-weight: 700;
  position: relative;
@@ -210,7 +210,7 @@ import ACTIVITIES from '../data/events.json';
 .cursor-blink {
  display: inline-block;
  width: 3px;
- background: var(, red);
+ background: var(--red);
  margin-left: 2px;
  animation: blink 0.7s step-end infinite;
  vertical-align: baseline;
@@ -226,7 +226,7 @@ import ACTIVITIES from '../data/events.json';
  /* ─── TAGLINE ─── */
 .hero-tagline {
  font-size: 1.15rem;
- color: var(, gray);
+ color: var(--gray);
  max-width: 480px;
  line-height: 1.7;
  margin: 0 auto 2.5rem;
@@ -246,8 +246,8 @@ import ACTIVITIES from '../data/events.json';
  align-items: center;
  gap: 0.5rem;
  padding: 0.85rem 2rem;
- background: var(, red);
- color: var(, white);
+ background: var(--red);
+ color: var(--white);
  font-family: 'Libre Baskerville', serif;
  font-weight: 700;
  font-size: 0.95rem;
@@ -277,14 +277,14 @@ import ACTIVITIES from '../data/events.json';
  width: 40px;
  height: 40px;
  border-radius: 50%;
- border: 1.5px solid var(, light-gray);
- color: var(, dark);
+ border: 1.5px solid var(--light-gray);
+ color: var(--dark);
  transition: border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .social-icons a:hover {
- border-color: var(, red);
- color: var(, red);
+ border-color: var(--red);
+ color: var(--red);
 }
 
  /* ─── SLIDE CONTAINER ─── */
@@ -325,11 +325,11 @@ import ACTIVITIES from '../data/events.json';
  height: 240px;
  border-radius: 20px;
  overflow: hidden;
- background: var(, off-white);
+ background: var(--off-white);
  display: flex;
  align-items: center;
  justify-content: center;
- border: 2px solid var(, light-gray);
+ border: 2px solid var(--light-gray);
  }
 
 .activity-image {
@@ -342,13 +342,13 @@ import ACTIVITIES from '../data/events.json';
  font-family: 'Libre Baskerville', serif;
  font-weight: 700;
  font-size: 1.5rem;
- color: var(, dark);
+ color: var(--dark);
  margin: 0;
  }
 
 .activity-desc {
  font-size: 1rem;
- color: var(, gray);
+ color: var(--gray);
  max-width: 400px;
  line-height: 1.7;
  margin: 0;
@@ -356,7 +356,7 @@ import ACTIVITIES from '../data/events.json';
 
 .activity-date {
  font-size: 0.85rem;
- color: var(, red);
+ color: var(--red);
  font-family: 'Libre Baskerville', serif;
  font-weight: 700;
  letter-spacing: 0.02em;
@@ -381,12 +381,12 @@ import ACTIVITIES from '../data/events.json';
  width: 8px;
  height: 8px;
  border-radius: 50%;
- background: var(, light-gray);
+ background: var(--light-gray);
  transition: background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .dot-active {
- background: var(, red);
+ background: var(--red);
  transform: scale(1.3);
  }
 
