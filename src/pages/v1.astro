@@ -4,485 +4,484 @@ import ACTIVITIES from '../data/events.json';
 ---
 
 <Layout title="v1.0.0 | Pizza & Friends" description="The Slider. The initial launch." theme="v1">
-  <main id="main-content" class="viewport-center">
-    <!-- Pizza icon -->
-    <button id="next-btn" class="pizza-button" aria-label="Next slide">
-      <img
-        class="hero-pizza"
-        src="/pizza_1f355.webp"
-        alt="🍕"
-        width="120"
-        height="120"
-      />
-      <span class="pizza-hint">tap me ↗</span>
-    </button>
+ <main id="main-content" class="viewport-center">
+ <!-- Pizza icon -->
+ <button id="next-btn" class="pizza-button" aria-label="Next slide">
+ <img
+ class="hero-pizza"
+ src="/pizza_1f355.webp"
+ alt="🍕"
+ width="120"
+ height="120"
+ fetchpriority="high"
+ loading="eager"
+ />
+ <span class="pizza-hint">tap me ↗</span>
+ </button>
 
-    <!-- Slide container -->
-    <div class="slide-container">
-      <!-- Hero Slide -->
-      <div class="slide" id="slide-0">
-        <div class="hero-title">
-          <div class="hero-title-text">
-            <span class="typed-word" style="display: inline-block; min-width: 4.2em">
-              <span id="type-text"></span><span class="cursor-blink"></span>
-            </span>
-          </div>
-        </div>
+ <!-- Slide container -->
+ <div class="slide-container">
+ <!-- Hero Slide -->
+ <div class="slide" id="slide-0">
+ <div class="hero-title">
+ <div class="hero-title-text">
+ <span class="typed-word" style="display: inline-block; min-width: 4.2em">
+ <span id="type-text"></span><span class="cursor-blink"></span>
+ </span>
+ </div>
+ </div>
 
-        <p class="hero-tagline">
-          Unexpectedly a tech community! From dinner meetups to Discord calls, we make cool stuff and try not to take it too seriously.
-        </p>
+ <p class="hero-tagline">
+ Unexpectedly a tech community! From dinner meetups to Discord calls, we make cool stuff and try not to take it too seriously.
+ </p>
 
-        <div class="cta-row">
-          <a class="cta-primary" href="https://discord.gg/TrycsErM4R" target="_blank" rel="noopener noreferrer">
-            Join the table 🍕
-          </a>
-          <div class="social-icons">
-            <a href="https://instagram.com/pizzaplusfriends" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <svg focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
-            </a>
-            <a href="https://facebook.com/pizzaplusfriends" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <svg focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
-            </a>
-            <a href="https://linkedin.com/company/pizzafriends" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <svg focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
+ <div class="cta-row">
+ <a class="cta-primary" href="https://discord.gg/TrycsErM4R" target="_blank" rel="noopener noreferrer">
+ Join the table 🍕
+ </a>
+ <div class="social-icons">
+ <a href="https://instagram.com/pizzaplusfriends" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+ <svg focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+ </a>
+ <a href="https://facebook.com/pizzaplusfriends" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+ <svg focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1.45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+ </a>
+ <a href="https://linkedin.com/company/pizzafriends" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+ <svg focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0.93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+ </a>
+ </div>
+ </div>
+ </div>
 
-      <!-- Activity Slides -->
-      {ACTIVITIES.map((activity, i) => (
-        <div class="slide" id={`slide-${i + 1}`} style="display: none;">
-          <div class="activity-slide">
-            <div class="activity-image-wrap">
-              {activity.image ? (
-                <img
-                  src={activity.image}
-                  alt={activity.title}
-                  width="280"
-                  height="280"
-                  class="activity-image"
-                />
-              ) : activity.video ? (
-                <video
-                  tabindex="-1"
-                  src={activity.video}
-                  width="280"
-                  height="280"
-                  class="activity-image"
-                  autoplay
-                  loop
-                  muted
-                  playsinline
-                  aria-label={activity.title}
-                >
-                  {activity.captions && (
-                    <track kind="captions" src={activity.captions} srclang="en" label="English" default />
-                  )}
-                </video>
-              ) : null}
-            </div>
-            <h2 class="activity-title">{activity.title}</h2>
-            <span class="activity-date">{activity.date}</span>
-            <div class="activity-desc-box">
-              <p class="activity-desc">{activity.description}</p>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
+ <!-- Activity Slides -->
+ {ACTIVITIES.map((activity, i) => (
+ <div class="slide" id={`slide-${i + 1}`} style="display: none;">
+ <div class="activity-slide">
+ <div class="activity-image-wrap">
+ {activity.image ? (
+ <img
+ src={activity.image}
+ alt={activity.title}
+ width="280"
+ height="280"
+ class="activity-image"
+ loading="lazy"
+ />
+ ) : activity.video ? (
+ <video
+ tabindex="-1"
+ src={activity.video}
+ width="280"
+ height="280"
+ class="activity-image"
+ autoplay
+ loop
+ muted
+ playsinline
+ aria-label={activity.title}
+ >
+ {activity.captions && (
+ <track kind="captions" src={activity.captions} srclang="en" label="English" default />
+ )}
+ </video>
+ ) : null}
+ </div>
+ <h2 class="activity-title">{activity.title}</h2>
+ <span class="activity-date">{activity.date}</span>
+ <div class="activity-desc-box">
+ <p class="activity-desc">{activity.description}</p>
+ </div>
+ </div>
+ </div>
+ ))}
+ </div>
 
-    <!-- Dots indicator -->
-    <div class="dots">
-      <span class="dot dot-active" id="dot-0"></span>
-      {ACTIVITIES.map((_, i) => (
-        <span class="dot" id={`dot-${i + 1}`}></span>
-      ))}
-    </div>
+ <!-- Dots indicator -->
+ <div class="dots">
+ <span class="dot dot-active" id="dot-0"></span>
+ {ACTIVITIES.map((_, i) => (
+ <span class="dot" id={`dot-${i + 1}`}></span>
+ ))}
+ </div>
 
-    <div style="margin-top: 4rem;">
-      <a href="/archive" style="background: var(--light-gray); color: var(--dark); padding: 0.6rem 1.2rem; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;" onmouseover="this.style.background='#d8ccc3'" onmouseout="this.style.background='var(--light-gray)'">&larr; Back to Archive</a>
-    </div>
-  </main>
+ <div style="margin-top: 4rem;">
+ <a href="/archive" style="background: var(--light-gray); color: var(--dark); padding: 0.6rem 1.2rem; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s;" onmouseover="this.style.background='#d8ccc3'" onmouseout="this.style.background='var(--light-gray)'">&larr; Back to Archive</a>
+ </div>
+ </main>
 </Layout>
 
 <style>
-  /* ─── VIEWPORT CENTER ─── */
-  .viewport-center {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
-    position: relative;
-  }
+ /* ─── VIEWPORT CENTER ─── */
+.viewport-center {
+ width: 100%;
+ min-height: 100vh;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ padding: 2rem;
+ position: relative;
+ }
 
-  /* ─── PIZZA BUTTON ─── */
-  .pizza-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    z-index: 10;
-    transition: transform 0.2s;
-  }
+ /* ─── PIZZA BUTTON ─── */
+.pizza-button {
+ background: none;
+ border: none;
+ cursor: pointer;
+ position: relative;
+ display: inline-flex;
+ flex-direction: column;
+ align-items: center;
+ margin-bottom: 1.5rem;
+ z-index: 10;
+ transition: transform 0.2s;
+ }
 
-  .pizza-button:hover {
-    transform: scale(1.1);
-  }
+.pizza-button:hover {
+ transform: scale(1.1);
+ }
 
-  .pizza-button:hover .pizza-hint {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.pizza-button:hover.pizza-hint {
+ opacity: 1;
+ transform: translateY(0);
+ }
 
-  .pizza-hint {
-    font-size: 0.75rem;
-    color: var(--red);
-    font-family: 'Libre Baskerville', serif;
-    font-weight: 700;
-    opacity: 0.6; /* override: always show hint initially */
-    transform: translateY(4px);
-    transition: all 0.3s;
-    margin-top: 0.4rem;
-    white-space: nowrap;
-    animation: hint-pulse 2.5s ease-in-out infinite;
-  }
+.pizza-hint {
+ font-size: 0.75rem;
+ color: var(--red);
+ font-family: 'Libre Baskerville', serif;
+ font-weight: 700;
+ opacity: 0.6; /* override: always show hint initially */
+ transform: translateY(4px);
+ transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+ margin-top: 0.4rem;
+ white-space: nowrap;
+ animation: hint-pulse 2.5s ease-in-out infinite;
+ }
 
-  @keyframes hint-pulse {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
-  }
+ @keyframes hint-pulse {
+ 0%, 100% { opacity: 0.6; }
+ 50% { opacity: 1; }
+ }
 
-  /* ─── HERO ─── */
-  .hero-pizza {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 1.5rem;
-    filter: drop-shadow(0 8px 24px rgba(242, 70, 56, 0.18));
-    animation: float 4s ease-in-out infinite;
-  }
+ /* ─── HERO ─── */
+.hero-pizza {
+ width: 120px;
+ height: 120px;
+ margin-bottom: 1.5rem;
+ filter: drop-shadow(0 8px 24px rgba(242, 70, 56, 0.18));
+ animation: float 4s ease-in-out infinite;
+ }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-12px) rotate(3deg); }
-  }
+ @keyframes float {
+ 0%, 100% { transform: translateY(0) rotate(0deg); }
+ 50% { transform: translateY(-12px) rotate(3deg); }
+ }
 
-  /* ─── GIANT TEXT ─── */
-  .hero-title {
-    position: relative;
-    z-index: 4;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
+ /* ─── GIANT TEXT ─── */
+.hero-title {
+ position: relative;
+ z-index: 4;
+ width: 100%;
+ text-align: center;
+ margin-bottom: 1.5rem;
+ }
 
-  .hero-title-text {
-    font-family: 'Libre Baskerville', serif;
-    font-weight: 700;
-    color: var(--dark);
-    line-height: 1;
-    letter-spacing: -0.03em;
-    white-space: nowrap;
-    font-size: clamp(3.5rem, 10vw, 9rem);
-  }
+.hero-title-text {
+ font-family: 'Libre Baskerville', serif;
+ font-weight: 700;
+ color: var(--dark);
+ line-height: 1;
+ letter-spacing: -0.03em;
+ white-space: nowrap;
+ font-size: clamp(3.5rem, 10vw, 9rem);
+ }
 
-  /* ─── TYPED WORD ─── */
-  .typed-word {
-    color: var(--red);
-    font-family: 'Libre Baskerville', serif;
-    font-weight: 700;
-    position: relative;
-    display: inline;
-  }
+ /* ─── TYPED WORD ─── */
+.typed-word {
+ color: var(--red);
+ font-family: 'Libre Baskerville', serif;
+ font-weight: 700;
+ position: relative;
+ display: inline;
+ }
 
-  .cursor-blink {
-    display: inline-block;
-    width: 3px;
-    background: var(--red);
-    margin-left: 2px;
-    animation: blink 0.7s step-end infinite;
-    vertical-align: baseline;
-    height: 0.75em;
-  }
+.cursor-blink {
+ display: inline-block;
+ width: 3px;
+ background: var(--red);
+ margin-left: 2px;
+ animation: blink 0.7s step-end infinite;
+ vertical-align: baseline;
+ height: 0.75em;
+ }
 
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
+ @keyframes blink {
+ 50% {
+ opacity: 0;
+ }
+ }
 
-  /* ─── TAGLINE ─── */
-  .hero-tagline {
-    font-size: 1.15rem;
-    color: var(--gray);
-    max-width: 480px;
-    line-height: 1.7;
-    margin: 0 auto 2.5rem;
-  }
+ /* ─── TAGLINE ─── */
+.hero-tagline {
+ font-size: 1.15rem;
+ color: var(--gray);
+ max-width: 480px;
+ line-height: 1.7;
+ margin: 0 auto 2.5rem;
+ }
 
-  /* ─── CTA ─── */
-  .cta-row {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+ /* ─── CTA ─── */
+.cta-row {
+ display: flex;
+ gap: 1rem;
+ align-items: center;
+ justify-content: center;
+ flex-wrap: wrap;
+ }
 
-  .cta-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 2rem;
-    background: var(--red);
-    color: var(--white);
-    font-family: 'Libre Baskerville', serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    border: none;
-    border-radius: 100px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.25s;
-    box-shadow: 0 4px 16px rgba(242, 70, 56, 0.25);
-  }
+.cta-primary {
+ display: inline-flex;
+ align-items: center;
+ gap: 0.5rem;
+ padding: 0.85rem 2rem;
+ background: var(--red);
+ color: var(--white);
+ font-family: 'Libre Baskerville', serif;
+ font-weight: 700;
+ font-size: 0.95rem;
+ border: none;
+ border-radius: 100px;
+ text-decoration: none;
+ cursor: pointer;
+ transition: background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+ box-shadow: 0 4px 16px rgba(242, 70, 56, 0.25);
+}
 
-  .cta-primary:hover {
-    background: #d93a2e;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(242, 70, 56, 0.35);
-  }
+.cta-primary:hover {
+ background: #d93a2e;
+}
 
-  /* ─── SOCIAL ICONS ─── */
-  .social-icons {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
+ /* ─── SOCIAL ICONS ─── */
+.social-icons {
+ display: flex;
+ gap: 1rem;
+ align-items: center;
+ }
 
-  .social-icons a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1.5px solid var(--light-gray);
-    color: var(--dark);
-    transition: all 0.25s;
-  }
+.social-icons a {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ border: 1.5px solid var(--light-gray);
+ color: var(--dark);
+ transition: border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
-  .social-icons a:hover {
-    border-color: var(--red);
-    color: var(--red);
-    transform: translateY(-2px);
-  }
+.social-icons a:hover {
+ border-color: var(--red);
+ color: var(--red);
+}
 
-  /* ─── SLIDE CONTAINER ─── */
-  .slide-container {
-    width: 100%;
-    max-width: 600px;
-    overflow: hidden;
-    position: relative;
-  }
+ /* ─── SLIDE CONTAINER ─── */
+.slide-container {
+ width: 100%;
+ max-width: 600px;
+ overflow: hidden;
+ position: relative;
+ }
 
-  .slide {
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
-    transform: translateX(0);
-    opacity: 1;
-  }
+.slide {
+ transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+ transform: translateX(0);
+ opacity: 1;
+ }
 
-  .slide-exit-left {
-    transform: translateX(-120%);
-    opacity: 0;
-  }
+.slide-exit-left {
+ transform: translateX(-120%);
+ opacity: 0;
+ }
 
-  .slide-enter-right {
-    transform: translateX(120%);
-    opacity: 0;
-    transition: none;
-  }
+.slide-enter-right {
+ transform: translateX(120%);
+ opacity: 0;
+ transition: none;
+ }
 
-  /* ─── ACTIVITY SLIDE ─── */
-  .activity-slide {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 0;
-  }
+ /* ─── ACTIVITY SLIDE ─── */
+.activity-slide {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 1rem;
+ padding: 1rem 0;
+ }
 
-  .activity-image-wrap {
-    height: 240px;
-    border-radius: 20px;
-    overflow: hidden;
-    background: var(--off-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid var(--light-gray);
-  }
+.activity-image-wrap {
+ height: 240px;
+ border-radius: 20px;
+ overflow: hidden;
+ background: var(--off-white);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ border: 2px solid var(--light-gray);
+ }
 
-  .activity-image {
-    height: 100%;
-    width: auto;
-    object-fit: contain;
-  }
+.activity-image {
+ height: 100%;
+ width: auto;
+ object-fit: contain;
+ }
 
-  .activity-title {
-    font-family: 'Libre Baskerville', serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--dark);
-    margin: 0;
-  }
+.activity-title {
+ font-family: 'Libre Baskerville', serif;
+ font-weight: 700;
+ font-size: 1.5rem;
+ color: var(--dark);
+ margin: 0;
+ }
 
-  .activity-desc {
-    font-size: 1rem;
-    color: var(--gray);
-    max-width: 400px;
-    line-height: 1.7;
-    margin: 0;
-  }
+.activity-desc {
+ font-size: 1rem;
+ color: var(--gray);
+ max-width: 400px;
+ line-height: 1.7;
+ margin: 0;
+ }
 
-  .activity-date {
-    font-size: 0.85rem;
-    color: var(--red);
-    font-family: 'Libre Baskerville', serif;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
+.activity-date {
+ font-size: 0.85rem;
+ color: var(--red);
+ font-family: 'Libre Baskerville', serif;
+ font-weight: 700;
+ letter-spacing: 0.02em;
+ }
 
-  .activity-desc-box {
-    height: 5.1em;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-  }
+.activity-desc-box {
+ height: 5.1em;
+ overflow: hidden;
+ display: flex;
+ align-items: flex-start;
+ justify-content: center;
+ }
 
-  /* ─── DOTS INDICATOR ─── */
-  .dots {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 2rem;
-  }
+ /* ─── DOTS INDICATOR ─── */
+.dots {
+ display: flex;
+ gap: 0.5rem;
+ margin-top: 2rem;
+ }
 
-  .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--light-gray);
-    transition: all 0.3s;
-  }
+.dot {
+ width: 8px;
+ height: 8px;
+ border-radius: 50%;
+ background: var(--light-gray);
+ transition: background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
-  .dot-active {
-    background: var(--red);
-    transform: scale(1.3);
-  }
+.dot-active {
+ background: var(--red);
+ transform: scale(1.3);
+ }
 
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 768px) {
-    .hero-pizza {
-      width: 80px;
-      height: 80px;
-    }
+ /* ─── RESPONSIVE ─── */
+ @media (max-width: 768px) {
+.hero-pizza {
+ width: 80px;
+ height: 80px;
+ }
 
-    .hero-title-text {
-      white-space: normal;
-    }
+.hero-title-text {
+ white-space: normal;
+ }
 
-    .activity-image-wrap {
-      width: 160px;
-      height: 160px;
-    }
-  }
+.activity-image-wrap {
+ width: 160px;
+ height: 160px;
+ }
+ }
 </style>
 
 <script>
-  // --- TypeWriter Logic ---
-  const words = ["pizza", "friends"];
-  let wordIndex = 0;
-  let text = "";
-  let isDeleting = false;
-  let typeSpeed = 130;
-  let deleteSpeed = 70;
-  
-  function type() {
-    const el = document.getElementById("type-text");
-    if (!el) return;
-    
-    const currentWord = words[wordIndex];
-    if (isDeleting) {
-      text = currentWord.substring(0, text.length - 1);
-    } else {
-      text = currentWord.substring(0, text.length + 1);
-    }
-    
-    el.textContent = text;
-    
-    let speed = isDeleting ? deleteSpeed : typeSpeed;
-    
-    if (!isDeleting && text === currentWord) {
-      speed = 2200;
-      isDeleting = true;
-    } else if (isDeleting && text === "") {
-      isDeleting = false;
-      wordIndex = (wordIndex + 1) % words.length;
-      speed = 350;
-    }
-    
-    setTimeout(type, speed);
-  }
-  
-  // Start the typing animation
-  setTimeout(type, typeSpeed);
+ // --- TypeWriter Logic ---
+ const words = ["pizza", "friends"];
+ let wordIndex = 0;
+ let text = "";
+ let isDeleting = false;
+ let typeSpeed = 130;
+ let deleteSpeed = 70;
+ 
+ function type() {
+ const el = document.getElementById("type-text");
+ if (!el) return;
+ 
+ const currentWord = words[wordIndex];
+ if (isDeleting) {
+ text = currentWord.substring(0, text.length - 1);
+ } else {
+ text = currentWord.substring(0, text.length + 1);
+ }
+ 
+ el.textContent = text;
+ 
+ let speed = isDeleting ? deleteSpeed : typeSpeed;
+ 
+ if (!isDeleting && text === currentWord) {
+ speed = 2200;
+ isDeleting = true;
+ } else if (isDeleting && text === "") {
+ isDeleting = false;
+ wordIndex = (wordIndex + 1) % words.length;
+ speed = 350;
+ }
+ 
+ setTimeout(type, speed);
+ }
+ 
+ // Start the typing animation
+ setTimeout(type, typeSpeed);
 
+ // --- Slider Logic ---
+ const slides = document.querySelectorAll('.slide');
+ const dots = document.querySelectorAll('.dot');
+ let currentIndex = 0;
+ const totalSlides = slides.length;
+ let isAnimating = false;
+ 
+ document.getElementById('next-btn').addEventListener('click', () => {
+ if (isAnimating) return;
+ isAnimating = true;
 
-  // --- Slider Logic ---
-  const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-  let currentIndex = 0;
-  const totalSlides = slides.length;
-  let isAnimating = false;
-  
-  document.getElementById('next-btn').addEventListener('click', () => {
-    if (isAnimating) return;
-    isAnimating = true;
-
-    const currentSlide = slides[currentIndex];
-    currentSlide.className = 'slide slide-exit-left';
-    
-    setTimeout(() => {
-      currentSlide.style.display = 'none';
-      dots[currentIndex].classList.remove('dot-active');
-      
-      currentIndex = (currentIndex + 1) % totalSlides;
-      
-      const nextSlide = slides[currentIndex];
-      nextSlide.className = 'slide slide-enter-right';
-      nextSlide.style.display = 'block';
-      dots[currentIndex].classList.add('dot-active');
-      
-      // Force reflow
-      void nextSlide.offsetHeight;
-      
-      setTimeout(() => {
-        nextSlide.className = 'slide';
-        setTimeout(() => {
-          isAnimating = false;
-        }, 400); // Wait for transition to finish before allowing another click
-      }, 50);
-      
-    }, 400);
-  });
+ const currentSlide = slides[currentIndex];
+ currentSlide.className = 'slide slide-exit-left';
+ 
+ setTimeout(() => {
+ currentSlide.style.display = 'none';
+ dots[currentIndex].classList.remove('dot-active');
+ 
+ currentIndex = (currentIndex + 1) % totalSlides;
+ 
+ const nextSlide = slides[currentIndex];
+ nextSlide.className = 'slide slide-enter-right';
+ nextSlide.style.display = 'block';
+ dots[currentIndex].classList.add('dot-active');
+ 
+ // Force reflow
+ void nextSlide.offsetHeight;
+ 
+ setTimeout(() => {
+ nextSlide.className = 'slide';
+ setTimeout(() => {
+ isAnimating = false;
+ }, 400); // Wait for transition to finish before allowing another click
+ }, 50);
+ 
+ }, 400);
+ });
 </script>

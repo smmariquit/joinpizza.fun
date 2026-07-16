@@ -4,6 +4,7 @@
 
 :root {
   --red: #c92a1e;
+  --red-hover: #a82015;
   --white: #ffffff;
   --off-white: #f4eee6;
   --dark: #2c1810;
@@ -11,6 +12,8 @@
   --light-gray: #e8ddd4;
   --cream: #fff8f0;
   --golden: #d4943a;
+  --shadow-cta: 0 4px 16px rgba(201, 42, 30, 0.3);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html, body {
@@ -91,7 +94,7 @@ body.theme-v3::before {
   color: var(--dark);
   text-decoration: none;
   opacity: 0.7;
-  transition: all 0.2s;
+  transition: opacity 0.2s var(--ease-out), color 0.2s var(--ease-out);
   letter-spacing: 0.01em;
 }
 
@@ -129,6 +132,7 @@ body.theme-v3::before {
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fadeInUp 0.6s var(--ease-out) both;
 }
 
 /* ─── HERO MARQUEE ─── */
@@ -177,7 +181,6 @@ body.theme-v3::before {
   margin-bottom: 0.75rem;
   position: relative;
   z-index: 10;
-  animation: fadeInUp 0.6s ease-out 0.15s both;
 }
 
 .hero-ampersand {
@@ -200,7 +203,6 @@ body.theme-v3::before {
   margin: 0 auto 2.5rem;
   position: relative;
   z-index: 10;
-  animation: fadeInUp 0.6s ease-out 0.3s both;
 }
 
 /* ─── CTA ─── */
@@ -211,7 +213,6 @@ body.theme-v3::before {
   gap: 0.75rem;
   position: relative;
   z-index: 10;
-  animation: fadeInUp 0.6s ease-out 0.45s both;
 }
 
 .cta-primary {
@@ -219,6 +220,7 @@ body.theme-v3::before {
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 2.5rem;
+  min-height: 48px;
   background: var(--red);
   color: #fff;
   font-family: 'Libre Baskerville', serif;
@@ -228,14 +230,17 @@ body.theme-v3::before {
   border-radius: 100px;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.25s;
-  box-shadow: 0 4px 16px rgba(201, 42, 30, 0.3);
+  transition: background-color 0.25s var(--ease-out);
+  box-shadow: var(--shadow-cta);
 }
 
 .cta-primary:hover {
-  background: #a82015;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(201, 42, 30, 0.4);
+  background: var(--red-hover);
+}
+
+.cta-primary:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 3px;
 }
 
 
@@ -250,19 +255,23 @@ body.theme-v3::before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1.5px solid var(--light-gray);
   background: var(--cream);
   color: var(--gray);
-  transition: all 0.25s;
+  transition: border-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
 }
 
 .social-icons a:hover {
   border-color: var(--red);
   color: var(--red);
-  transform: translateY(-2px);
+}
+
+.social-icons a:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
 }
 
 
@@ -300,13 +309,12 @@ body.theme-v3::before {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.08);
   position: relative;
   transform: rotate(var(--rotation, 0deg));
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+  transition: transform 0.4s var(--ease-out);
 }
 
 /* Don't apply hover effects to hero photos to avoid weirdness */
 .activities-section .polaroid:hover {
   transform: rotate(0deg) scale(1.05);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
   z-index: 10;
 }
 

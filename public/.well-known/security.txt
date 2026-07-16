@@ -1,0 +1,3 @@
+Contact: mailto:semariquit@gmail.com
+Preferred-Languages: en
+Canonical: https://www.joinpizza.fun/.well-known/security.txt

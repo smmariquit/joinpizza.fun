@@ -2,104 +2,104 @@
 import Layout from '../layouts/Layout.astro';
 
 const versions = [
-  {
-    version: "v3.0.0",
-    codename: "Polaroid Wall",
-    date: "Current",
-    description: "A high-authenticity, photo-first approach. Real community photos are scattered across a physical 'scrapbook' interface. Floating IRL media and handwriting fonts emphasize the raw, unexpected nature of the community.",
-    highlights: ["CSS-only scattered polaroid grid", "Floating media hero section with webp/mp4", "Caveat handwriting captions", "Libre Baskerville typography"],
-    link: "/"
-  },
-  {
-    version: "v2.0.0",
-    codename: "The Grid",
-    date: "Previous Iteration",
-    description: "A structured, editorial approach. Moving away from standard SaaS templates to a cleaner, card-based gallery. Emphasized content organization but lacked the 'fun' chaos of the physical world.",
-    highlights: ["Responsive CSS Grid", "Clean typography", "Organized event cards"],
-    link: "/v2"
-  },
-  {
-    version: "v1.0.0",
-    codename: "The Slider",
-    date: "Initial Launch",
-    description: "The minimum viable product. Featured standard animated TypeWriter effects and a horizontal scrolling slider for activities. Highly generic, resembling a startup landing page rather than a community portal.",
-    highlights: ["Typewriter animations", "Horizontal scrolling slider", "Standard SaaS aesthetic"],
-    link: "/v1"
-  },
-  {
-    version: "v0.0.0",
-    codename: "Webflow Original",
-    date: "Pre-Launch",
-    description: "The very first iteration built on Webflow. Used as a placeholder and proof of concept before moving to a coded stack.",
-    highlights: ["Webflow template", "Static placeholder"],
-    link: "https://pizza-and-friends.webflow.io",
-    image: "/archive-v0.png"
-  }
+ {
+ version: "v3.0.0",
+ codename: "Polaroid Wall",
+ date: "Current",
+ description: "A high-authenticity, photo-first approach. Real community photos are scattered across a physical 'scrapbook' interface. Floating IRL media and handwriting fonts emphasize the raw, unexpected nature of the community.",
+ highlights: ["CSS-only scattered polaroid grid", "Floating media hero section with webp/mp4", "Caveat handwriting captions", "Libre Baskerville typography"],
+ link: "/"
+ },
+ {
+ version: "v2.0.0",
+ codename: "The Grid",
+ date: "Previous Iteration",
+ description: "A structured, editorial approach. Moving away from standard SaaS templates to a cleaner, card-based gallery. Emphasized content organization but lacked the 'fun' chaos of the physical world.",
+ highlights: ["Responsive CSS Grid", "Clean typography", "Organized event cards"],
+ link: "/v2"
+ },
+ {
+ version: "v1.0.0",
+ codename: "The Slider",
+ date: "Initial Launch",
+ description: "The minimum viable product. Featured standard animated TypeWriter effects and a horizontal scrolling slider for activities. Highly generic, resembling a startup landing page rather than a community portal.",
+ highlights: ["Typewriter animations", "Horizontal scrolling slider", "Standard SaaS aesthetic"],
+ link: "/v1"
+ },
+ {
+ version: "v0.0.0",
+ codename: "Webflow Original",
+ date: "Pre-Launch",
+ description: "The very first iteration built on Webflow. Used as a placeholder and proof of concept before moving to a coded stack.",
+ highlights: ["Webflow template", "Static placeholder"],
+ link: "https://pizza-and-friends.webflow.io",
+ image: "/archive-v0.png"
+ }
 ];
 ---
 
 <Layout title="Design Archive | Pizza & Friends" description="The evolutionary trajectory of the Pizza & Friends website design.">
-  <main id="main-content" class="page-wrapper" style="padding: 4rem 2rem; max-width: 800px; margin: 0 auto;">
-    <a href="/" style="background: var(--red); color: white; padding: 0.8rem 1.5rem; border-radius: 100px; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 3rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 10px rgba(201, 42, 30, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 15px rgba(201, 42, 30, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 10px rgba(201, 42, 30, 0.3)'">
-      &larr; Back to present
-    </a>
-    
-    <h1 style="font-family: var(--font-libre-baskerville); font-size: 3rem; color: var(--dark); margin-bottom: 1rem;">
-      Design Archive
-    </h1>
-    <p style="color: var(--gray); font-size: 1.1rem; margin-bottom: 4rem; line-height: 1.6;">
-      Documenting the evolutionary trajectory of joinpizza.fun. From a generic startup template to a physical scrapbook of real memories.
-    </p>
+ <main id="main-content" class="page-wrapper" style="padding: 4rem 2rem; max-width: 800px; margin: 0 auto;">
+ <a href="/" style="background: var(--red); color: white; padding: 0.8rem 1.5rem; border-radius: 100px; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 3rem; transition: filter 0.2s cubic-bezier(0.22, 1, 0.36, 1); box-shadow: 0 4px 10px rgba(201, 42, 30, 0.3);" onmouseover="this.style.filter='brightness(1.08)'" onmouseout="this.style.filter='none'">
+ &larr; Back to present
+ </a>
+ 
+ <h1 style="font-family: var(--font-libre-baskerville); font-size: 3rem; color: var(--dark); margin-bottom: 1rem;">
+ Design Archive
+ </h1>
+ <p style="color: var(--gray); font-size: 1.1rem; margin-bottom: 4rem; line-height: 1.6;">
+ Documenting the evolutionary trajectory of joinpizza.fun. From a generic startup template to a physical scrapbook of real memories.
+ </p>
 
-    <div style="display: flex; flex-direction: column; gap: 4rem;">
-      {versions.map((v) => (
-        <div style="border-left: 3px solid var(--light-gray); padding-left: 2rem; position: relative;">
-          <div style={`
-            position: absolute; 
-            left: -11px; 
-            top: 0; 
-            width: 20px; 
-            height: 20px; 
-            border-radius: 50%; 
-            background: var(--light-gray);
-            box-shadow: none;
-          `}></div>
-          
-          <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
-            <h2 style="font-size: 1.8rem; color: var(--dark); margin: 0;">{v.version}</h2>
-            <span style="font-size: 1rem; color: var(--red); font-weight: 600;">{v.codename}</span>
-            {v.link && (
-              <a href={v.link} target={v.link.startsWith('http') ? '_blank' : '_self'} style="margin-left: auto; font-size: 0.9rem; color: var(--red); text-decoration: none; font-weight: 600; padding: 0.5rem 1.2rem; border: 2px solid var(--red); border-radius: 100px; transition: all 0.2s; background: transparent;" onmouseover="this.style.background='var(--red)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='var(--red)'">
-                Visit &rarr;
-              </a>
-            )}
-          </div>
-          
-          <div style="font-size: 0.9rem; color: var(--gray); opacity: 0.7; margin-bottom: 1.5rem;">
-            {v.date}
-          </div>
-          
-          <p style="color: var(--gray); line-height: 1.6; margin-bottom: 1.5rem;">
-            {v.description}
-          </p>
-          
-          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.75rem;">
-            {v.highlights.map((highlight) => (
-              <li style="
-                background: var(--light-gray); 
-                border: 1px solid rgba(0,0,0,0.05); 
-                padding: 0.4rem 1rem; 
-                border-radius: 100px;
-                font-size: 0.85rem;
-                font-weight: 500;
-                color: var(--dark);
-              ">
-                {highlight}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </main>
+ <div style="display: flex; flex-direction: column; gap: 4rem;">
+ {versions.map((v) => (
+ <div style="border-left: 3px solid var(--light-gray); padding-left: 2rem; position: relative;">
+ <div style={`
+ position: absolute; 
+ left: -11px; 
+ top: 0; 
+ width: 20px; 
+ height: 20px; 
+ border-radius: 50%; 
+ background: var(--light-gray);
+ box-shadow: none;
+ `}></div>
+ 
+ <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+ <h2 style="font-size: 1.8rem; color: var(--dark); margin: 0;">{v.version}</h2>
+ <span style="font-size: 1rem; color: var(--red); font-weight: 600;">{v.codename}</span>
+ {v.link && (
+ <a href={v.link} target={v.link.startsWith('http') ? '_blank' : '_self'} style="margin-left: auto; font-size: 0.9rem; color: var(--red); text-decoration: none; font-weight: 600; padding: 0.5rem 1.2rem; border: 2px solid var(--red); border-radius: 100px; transition: background-color 0.2s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s cubic-bezier(0.22, 1, 0.36, 1); background: transparent;" onmouseover="this.style.background='var(--red)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='var(--red)'">
+ Visit &rarr;
+ </a>
+ )}
+ </div>
+ 
+ <div style="font-size: 0.9rem; color: var(--gray); opacity: 0.7; margin-bottom: 1.5rem;">
+ {v.date}
+ </div>
+ 
+ <p style="color: var(--gray); line-height: 1.6; margin-bottom: 1.5rem;">
+ {v.description}
+ </p>
+ 
+ <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+ {v.highlights.map((highlight) => (
+ <li style="
+ background: var(--light-gray); 
+ border: 1px solid rgba(0,0,0,0.05); 
+ padding: 0.4rem 1rem; 
+ border-radius: 100px;
+ font-size: 0.85rem;
+ font-weight: 500;
+ color: var(--dark);
+ ">
+ {highlight}
+ </li>
+ ))}
+ </ul>
+ </div>
+ ))}
+ </div>
+ </main>
 </Layout>
