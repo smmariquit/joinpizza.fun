@@ -53,7 +53,7 @@ const irlFiles = fs.readdirSync(irlDir)
  {irlFiles.map((file, i) => {
  const rot = ROTATIONS[i % ROTATIONS.length];
  return (
- <div class="polaroid marquee-photo" style={`, rotation: ${rot}deg`}>
+ <div class="polaroid marquee-photo" style={{ transform: `rotate(${rot}deg)` }}>
  <div class="polaroid-image-wrap">
  <img
  src={`/irl/${file}`}
@@ -73,7 +73,7 @@ const irlFiles = fs.readdirSync(irlDir)
  {irlFiles.map((file, i) => {
  const rot = ROTATIONS[i % ROTATIONS.length];
  return (
- <div class="polaroid marquee-photo" style={`, rotation: ${rot}deg`} aria-hidden="true">
+ <div class="polaroid marquee-photo" style={{ transform: `rotate(${rot}deg)` }} aria-hidden="true">
  <div class="polaroid-image-wrap">
  <img
  src={`/irl/${file}`}
@@ -101,7 +101,7 @@ const irlFiles = fs.readdirSync(irlDir)
  return (
  <div
  class="polaroid"
- style={`, rotation: ${rot}deg`}
+ style={{ transform: `rotate(${rot}deg)` }}
  >
  <div class="tape"></div>
  <div class="polaroid-image-wrap">
