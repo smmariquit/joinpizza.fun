@@ -220,6 +220,7 @@ body.theme-v3::before {
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 2.5rem;
+  min-height: 48px;
   background: var(--red);
   color: #fff;
   font-family: 'Libre Baskerville', serif;
@@ -237,6 +238,11 @@ body.theme-v3::before {
   background: var(--red-hover);
 }
 
+.cta-primary:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 3px;
+}
+
 
 
 .social-icons {
@@ -249,8 +255,8 @@ body.theme-v3::before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1.5px solid var(--light-gray);
   background: var(--cream);
@@ -261,6 +267,11 @@ body.theme-v3::before {
 .social-icons a:hover {
   border-color: var(--red);
   color: var(--red);
+}
+
+.social-icons a:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
 }
 
 
