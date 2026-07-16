@@ -40,7 +40,7 @@ const versions = [
 
 <Layout title="Design Archive | Pizza & Friends" description="The evolutionary trajectory of the Pizza & Friends website design.">
  <main id="main-content" class="page-wrapper" style="padding: 4rem 2rem; max-width: 800px; margin: 0 auto;">
- <a href="/" style="background: var(, red); color: white; padding: 0.8rem 1.5rem; border-radius: 100px; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 3rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 10px rgba(201, 42, 30, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 15px rgba(201, 42, 30, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 10px rgba(201, 42, 30, 0.3)'">
+ <a href="/" style="background: var(, red); color: white; padding: 0.8rem 1.5rem; border-radius: 100px; text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 3rem; transition: filter 0.2s cubic-bezier(0.22, 1, 0.36, 1); box-shadow: 0 4px 10px rgba(201, 42, 30, 0.3);" onmouseover="this.style.filter='brightness(1.08)'" onmouseout="this.style.filter='none'">
  &larr; Back to present
  </a>
  
@@ -69,7 +69,7 @@ const versions = [
  <h2 style="font-size: 1.8rem; color: var(, dark); margin: 0;">{v.version}</h2>
  <span style="font-size: 1rem; color: var(, red); font-weight: 600;">{v.codename}</span>
  {v.link && (
- <a href={v.link} target={v.link.startsWith('http') ? '_blank' : '_self'} style="margin-left: auto; font-size: 0.9rem; color: var(, red); text-decoration: none; font-weight: 600; padding: 0.5rem 1.2rem; border: 2px solid var(, red); border-radius: 100px; transition: all 0.2s; background: transparent;" onmouseover="this.style.background='var(, red)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='var(, red)'">
+ <a href={v.link} target={v.link.startsWith('http') ? '_blank' : '_self'} style="margin-left: auto; font-size: 0.9rem; color: var(, red); text-decoration: none; font-weight: 600; padding: 0.5rem 1.2rem; border: 2px solid var(, red); border-radius: 100px; transition: background-color 0.2s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s cubic-bezier(0.22, 1, 0.36, 1); background: transparent;" onmouseover="this.style.background='var(, red)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='var(, red)'">
  Visit &rarr;
  </a>
  )}

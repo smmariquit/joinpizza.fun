@@ -13,6 +13,8 @@ import ACTIVITIES from '../data/events.json';
  alt="🍕"
  width="120"
  height="120"
+ fetchpriority="high"
+ loading="eager"
  />
  <span class="pizza-hint">tap me ↗</span>
  </button>
@@ -63,6 +65,7 @@ import ACTIVITIES from '../data/events.json';
  width="280"
  height="280"
  class="activity-image"
+ loading="lazy"
  />
  ) : activity.video ? (
  <video
@@ -151,7 +154,7 @@ import ACTIVITIES from '../data/events.json';
  font-weight: 700;
  opacity: 0.6; /* override: always show hint initially */
  transform: translateY(4px);
- transition: all 0.3s;
+ transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1);
  margin-top: 0.4rem;
  white-space: nowrap;
  animation: hint-pulse 2.5s ease-in-out infinite;
@@ -252,15 +255,13 @@ import ACTIVITIES from '../data/events.json';
  border-radius: 100px;
  text-decoration: none;
  cursor: pointer;
- transition: all 0.25s;
+ transition: background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
  box-shadow: 0 4px 16px rgba(242, 70, 56, 0.25);
- }
+}
 
 .cta-primary:hover {
  background: #d93a2e;
- transform: translateY(-2px);
- box-shadow: 0 6px 24px rgba(242, 70, 56, 0.35);
- }
+}
 
  /* ─── SOCIAL ICONS ─── */
 .social-icons {
@@ -278,14 +279,13 @@ import ACTIVITIES from '../data/events.json';
  border-radius: 50%;
  border: 1.5px solid var(, light-gray);
  color: var(, dark);
- transition: all 0.25s;
- }
+ transition: border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
 .social-icons a:hover {
  border-color: var(, red);
  color: var(, red);
- transform: translateY(-2px);
- }
+}
 
  /* ─── SLIDE CONTAINER ─── */
 .slide-container {
@@ -382,8 +382,8 @@ import ACTIVITIES from '../data/events.json';
  height: 8px;
  border-radius: 50%;
  background: var(, light-gray);
- transition: all 0.3s;
- }
+ transition: background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
 .dot-active {
  background: var(, red);
