@@ -284,15 +284,6 @@ body.theme-v3::before {
   z-index: 10;
 }
 
-.event-kicker {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--red);
-  margin-bottom: 0.5rem;
-}
-
 .event-title {
   font-family: 'Libre Baskerville', serif;
   font-weight: 700;
