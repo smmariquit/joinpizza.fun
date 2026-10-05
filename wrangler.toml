@@ -1,0 +1,11 @@
+# Cloudflare Pages config. Deploys run from GitHub Actions (wrangler pages deploy dist).
+name = "joinpizza-fun"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-10-01"
+
+# Click log for tracked short links (/hny, /ztp). Report with `npm run clicks`.
+[[d1_databases]]
+binding = "CLICKS"
+database_name = "joinpizza-clicks"
+database_id = "50af8407-057d-44bc-8d79-a9705cd63179"
+migrations_dir = "migrations"

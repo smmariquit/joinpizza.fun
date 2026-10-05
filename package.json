@@ -9,7 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "clicks": "CLOUDFLARE_ACCOUNT_ID=847a37119fd03f8765b62a6775a6c204 wrangler d1 execute joinpizza-clicks --remote --command \"SELECT link, ref, COUNT(*) AS clicks, MIN(ts) AS first, MAX(ts) AS last FROM clicks GROUP BY link, ref ORDER BY clicks DESC\"",
+    "clicks:daily": "CLOUDFLARE_ACCOUNT_ID=847a37119fd03f8765b62a6775a6c204 wrangler d1 execute joinpizza-clicks --remote --command \"SELECT date(ts) AS day, link, COUNT(*) AS clicks FROM clicks GROUP BY day, link ORDER BY day DESC\""
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.2",
