@@ -13,6 +13,10 @@ const irlDir = path.join(process.cwd(), 'public/irl');
 const irlFiles = fs.readdirSync(irlDir)
 .filter(f => /\.webp$/i.test(f)) // photos only: no videos in the marquee (performance + dedup)
 .sort(() => 0.5 - Math.random()); // shuffle for variety
+
+// Hack & Yap Episode 2 card hides after this (build time + inline script for stale deploys)
+const EVENT_END = new Date('2026-10-17T18:30:00+08:00');
+const showEvent = new Date() < EVENT_END;
 ---
 
 <Layout>
@@ -28,8 +32,19 @@ const irlFiles = fs.readdirSync(irlDir)
  Unexpectedly a tech community! From dinner meetups to Discord calls, we make cool stuff and try not to take it too seriously.
  </p>
 
+ {showEvent && (
+ <aside class="event-card" id="event-card" aria-labelledby="event-title">
+ <p class="event-kicker">Up next</p>
+ <h2 id="event-title" class="event-title">Hack &amp; Yap: Anti-Brainrot</h2>
+ <p class="event-meta">Sat, Oct 17, 1:30 to 6:30 PM at Zero-Ten Park, Makati</p>
+ <a class="cta-primary" href="https://luma.com/ekf47d40" target="_blank" rel="noopener noreferrer">Save a seat</a>
+ <p class="event-links"><a href="/hackathon">Hackathon primer</a> and <a href="/speakers">Speaker primer</a></p>
+ </aside>
+ <script is:inline>if (Date.now() > Date.parse('2026-10-17T18:30:00+08:00')) document.getElementById('event-card')?.remove();</script>
+ )}
+
  <div class="cta-stack">
- <a class="cta-primary" href="https://discord.gg/TrycsErM4R" target="_blank" rel="noopener noreferrer">
+ <a class={showEvent ? 'cta-secondary' : 'cta-primary'} href="https://discord.gg/TrycsErM4R" target="_blank" rel="noopener noreferrer">
  Join the table
  </a>
  <nav class="social-icons" aria-label="Social media links">
