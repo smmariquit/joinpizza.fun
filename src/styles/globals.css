@@ -243,6 +243,84 @@ body.theme-v3::before {
   outline-offset: 3px;
 }
 
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  min-height: 48px;
+  background: transparent;
+  color: var(--red);
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: 2px solid var(--red);
+  border-radius: 100px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease-out);
+}
+
+.cta-secondary:hover {
+  background: var(--cream);
+}
+
+.cta-secondary:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 3px;
+}
+
+/* ─── EVENT CARD ─── */
+.event-card {
+  background: var(--white);
+  border: 2px solid var(--red);
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.event-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+
+.event-title {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.event-meta {
+  color: var(--gray);
+  margin-bottom: 1.25rem;
+}
+
+.event-links {
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.event-links a {
+  color: var(--red);
+  text-decoration: underline;
+}
+
+.event-links a:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+}
+
 
 
 .social-icons {
