@@ -29,3 +29,5 @@ restore.py
 image-11.png
 *.HEIC
 .vercel
+.dev.vars
+.wrangler/
