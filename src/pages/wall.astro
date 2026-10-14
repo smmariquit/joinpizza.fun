@@ -7,8 +7,12 @@ import Layout from '../layouts/Layout.astro';
 <main id="main-content" class="wall">
   <div class="viewport" id="viewport" aria-hidden="true"><div class="scene" id="scene"></div></div>
 
-  <section class="panel" aria-labelledby="wall-title">
-    <h1 id="wall-title">The Yap Wall</h1>
+  <section class="panel" id="panel" aria-labelledby="wall-title">
+    <div class="head">
+      <h1 id="wall-title">The Yap Wall</h1>
+      <button type="button" class="toggle" id="toggle" aria-expanded="true" aria-controls="panel-body">Hide</button>
+    </div>
+    <div class="body" id="panel-body">
     <p id="intro">Everyone who was at <b>Hack &amp; Yap</b> gets to leave something here. At the end of the event we put a secret word on the screen. Come back here, type it in, pick a thing, and pin a message in the pizza cloud. It stays up after.</p>
     <p class="when" id="when">Opens Sat, Oct 17 at 5 PM, right after the awards.</p>
 
@@ -20,7 +24,8 @@ import Layout from '../layouts/Layout.astro';
       <button type="submit">Pin it</button>
       <p class="status" id="status" role="status"></p>
     </form>
-    <p class="hint">Drag to look around.</p>
+    <p class="hint">Drag the cloud to look around. <a href="/">Pizza &amp; Friends</a></p>
+    </div>
   </section>
 
   <ul class="sr-only" id="list" aria-label="Messages on the wall"></ul>
@@ -28,8 +33,8 @@ import Layout from '../layouts/Layout.astro';
 
 <style is:global>
   /* Global because the cloud items, cards and picker are created by script; everything is scoped under .wall. */
-  .wall { position: fixed; inset: 0; overflow: hidden; background: radial-gradient(circle at 50% 40%, #fff7ec, #f1e3cf 70%); color: #2b2420; touch-action: none; }
-  .wall .viewport { position: absolute; inset: 0; perspective: 1000px; cursor: grab; }
+  .wall { position: fixed; inset: 0; overflow: hidden; background: radial-gradient(circle at 50% 40%, #fff7ec, #f1e3cf 70%); color: #2b2420; }
+  .wall .viewport { position: absolute; inset: 0; perspective: 1000px; cursor: grab; touch-action: none; }
   .wall .viewport:active { cursor: grabbing; }
   .wall .scene { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; }
   .wall .scene > * { position: absolute; transform-style: preserve-3d; left: 0; top: 0; user-select: none; }
@@ -42,22 +47,35 @@ import Layout from '../layouts/Layout.astro';
   .wall .card b { display: block; margin-top: 6px; font: 600 12px var(--font-geist-mono); color: #8a6d55; }
   .wall .panel { position: absolute; left: 16px; top: 16px; width: min(360px, calc(100% - 32px)); max-height: calc(100% - 32px); overflow: auto;
            padding: 18px 20px; background: rgba(255,253,248,.92); border-radius: 16px; box-shadow: 0 10px 30px rgba(80,50,20,.15); }
-  .wall .panel h1 { font: 700 30px var(--font-libre-baskerville); }
+  .wall .panel .head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .wall .panel h1 { font: 700 28px var(--font-libre-baskerville); }
+  .wall .toggle { flex: none; min-height: 40px; padding: 8px 14px; font: 600 14px var(--font-geist-sans); color: #2b2420; background: #f3e6d6; }
+  .wall .panel.collapsed .body { display: none; }
+  .wall .card.mine { outline: 3px solid #c4492f; }
+  .wall .hint a { color: inherit; }
   .wall .panel p { margin-top: 8px; font: 15px/1.45 var(--font-geist-sans); }
   .wall .when { font-weight: 600; }
   .wall form { margin-top: 12px; display: grid; gap: 10px; font: 14px var(--font-geist-sans); }
   .wall label { display: grid; gap: 4px; font-weight: 600; }
-  .wall input, .wall textarea { font: inherit; font-weight: 400; padding: 8px 10px; border: 1px solid #d8c7b4; border-radius: 8px; background: #fff; }
+  .wall input, .wall textarea { font: 400 16px var(--font-geist-sans); padding: 10px 12px; border: 1px solid #d8c7b4; border-radius: 10px; background: #fff; } /* 16px stops iOS zooming in on focus */
   .wall fieldset { border: 0; } legend { font-weight: 600; margin-bottom: 4px; }
   .wall #things { display: flex; flex-wrap: wrap; gap: 6px; }
   .wall #things label { display: block; font-size: 24px; }
   .wall #things input { position: absolute; opacity: 0; }
-  .wall #things span { display: block; padding: 4px 8px; border: 2px solid transparent; border-radius: 10px; cursor: pointer; }
+  .wall #things span { display: grid; place-items: center; min-width: 48px; min-height: 48px; padding: 4px 8px; border: 2px solid #eadccb; border-radius: 12px; cursor: pointer; background: #fff; }
   .wall #things input:checked + span { border-color: #c4492f; background: #fff1e8; }
   .wall #things input:focus-visible + span { outline: 2px solid #2b2420; }
-  .wall button { padding: 10px; font: 700 15px var(--font-geist-sans); color: #fff; background: #c4492f; border: 0; border-radius: 10px; cursor: pointer; }
+  .wall button { min-height: 48px; padding: 10px; font: 700 16px var(--font-geist-sans); color: #fff; background: #c4492f; border: 0; border-radius: 12px; cursor: pointer; }
   .wall .status { min-height: 1.2em; font-size: 14px; }
   .wall .hint { color: #8a6d55; font-size: 13px; }
+  /* Phones: the panel becomes a bottom sheet so the cloud stays visible above it. */
+  @media (max-width: 640px) {
+    .wall .panel { left: 0; right: 0; top: auto; bottom: 0; width: auto; max-height: 72%; border-radius: 18px 18px 0 0; padding: 14px 16px calc(16px + env(safe-area-inset-bottom)); }
+    .wall .scene { top: 26%; } /* center the cloud in the space above the sheet */
+    .wall .panel h1 { font-size: 22px; }
+    .wall .card { width: 150px; margin-left: -75px; font-size: 13px; }
+    .wall .deco { font-size: 34px; } .wall .deco img { width: 48px; height: 48px; }
+  }
   .wall .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 </style>
 
@@ -119,6 +137,16 @@ import Layout from '../layouts/Layout.astro';
   });
   viewport.addEventListener('pointerup', () => { drag = null; });
 
+  // Panel show/hide, so phones can see the whole cloud.
+  const panel = document.getElementById('panel');
+  const toggle = document.getElementById('toggle');
+  function setPanel(open) {
+    panel.classList.toggle('collapsed', !open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? 'Hide' : 'Show';
+  }
+  toggle.addEventListener('click', () => setPanel(panel.classList.contains('collapsed')));
+
   // Wall data and the form.
   const form = document.getElementById('form');
   const status = document.getElementById('status');
@@ -141,8 +169,10 @@ import Layout from '../layouts/Layout.astro';
     const d = await r.json().catch(() => ({}));
     if (!r.ok) { status.textContent = d.error || 'Something went wrong.'; return; }
     card(d);
+    items[items.length - 1].el.classList.add('mine');
     form.msg.value = '';
-    status.textContent = "You're on the wall. Look for it in the cloud.";
+    status.textContent = "You're on the wall. Yours has the red outline.";
+    if (matchMedia('(max-width: 640px)').matches) setPanel(false); // show the cloud on phones
   });
 </script>
 </Layout>
