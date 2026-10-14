@@ -1,0 +1,178 @@
+---
+import Layout from '../layouts/Layout.astro';
+// Yap wall: pizzas, brainrot and messages from Hack & Yap floating in a CSS 3D cloud. Data: functions/api/wall.js.
+---
+
+<Layout title="The Yap Wall | Pizza & Friends" description="Messages from Hack & Yap, floating in a cloud of pizza.">
+<main id="main-content" class="wall">
+  <div class="viewport" id="viewport" aria-hidden="true"><div class="scene" id="scene"></div></div>
+
+  <section class="panel" id="panel" aria-labelledby="wall-title">
+    <div class="head">
+      <h1 id="wall-title">The Yap Wall</h1>
+      <button type="button" class="toggle" id="toggle" aria-expanded="true" aria-controls="panel-body">Hide</button>
+    </div>
+    <div class="body" id="panel-body">
+    <p id="intro">Everyone who was at <b>Hack &amp; Yap</b> gets to leave something here. At the end of the event we put a secret word on the screen. Come back here, type it in, pick a thing, and pin a message in the pizza cloud. It stays up after.</p>
+    <p class="when" id="when">Opens Sat, Oct 17 at 5 PM, right after the awards.</p>
+
+    <form id="form" hidden>
+      <label>The word from the event <input name="code" autocomplete="off" required maxlength="40"></label>
+      <label>Your name (optional) <input name="name" maxlength="30"></label>
+      <label>Your message <textarea name="msg" required maxlength="140" rows="3"></textarea></label>
+      <fieldset><legend>Pick a thing</legend><div id="things"></div></fieldset>
+      <button type="submit">Pin it</button>
+      <p class="status" id="status" role="status"></p>
+    </form>
+    <p class="hint">Drag the cloud to look around. <a href="/">Pizza &amp; Friends</a></p>
+    </div>
+  </section>
+
+  <ul class="sr-only" id="list" aria-label="Messages on the wall"></ul>
+</main>
+
+<style is:global>
+  /* Global because the cloud items, cards and picker are created by script; everything is scoped under .wall. */
+  .wall { position: fixed; inset: 0; overflow: hidden; background: radial-gradient(circle at 50% 40%, #fff7ec, #f1e3cf 70%); color: #2b2420; }
+  .wall .viewport { position: absolute; inset: 0; perspective: 1000px; cursor: grab; touch-action: none; }
+  .wall .viewport:active { cursor: grabbing; }
+  .wall .scene { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; }
+  .wall .scene > * { position: absolute; transform-style: preserve-3d; left: 0; top: 0; user-select: none; }
+  .wall .deco { font-size: 44px; line-height: 1; }
+  .wall .deco img { width: 64px; height: 64px; display: block; }
+  .wall .deco.txt { font: 800 40px var(--font-geist-sans); color: #c4492f; }
+  .wall .card { width: 190px; margin-left: -95px; padding: 10px 12px; background: #fffdf8; border-radius: 12px; box-shadow: 0 6px 18px rgba(80,50,20,.18);
+          font: 15px/1.35 var(--font-geist-sans); }
+  .wall .card .t { font-size: 26px; line-height: 1; }
+  .wall .card b { display: block; margin-top: 6px; font: 600 12px var(--font-geist-mono); color: #8a6d55; }
+  .wall .panel { position: absolute; left: 16px; top: 16px; width: min(360px, calc(100% - 32px)); max-height: calc(100% - 32px); overflow: auto;
+           padding: 18px 20px; background: rgba(255,253,248,.92); border-radius: 16px; box-shadow: 0 10px 30px rgba(80,50,20,.15); }
+  .wall .panel .head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .wall .panel h1 { font: 700 28px var(--font-libre-baskerville); }
+  .wall .toggle { flex: none; min-height: 40px; padding: 8px 14px; font: 600 14px var(--font-geist-sans); color: #2b2420; background: #f3e6d6; }
+  .wall .panel.collapsed .body { display: none; }
+  .wall .card.mine { outline: 3px solid #c4492f; }
+  .wall .hint a { color: inherit; }
+  .wall .panel p { margin-top: 8px; font: 15px/1.45 var(--font-geist-sans); }
+  .wall .when { font-weight: 600; }
+  .wall form { margin-top: 12px; display: grid; gap: 10px; font: 14px var(--font-geist-sans); }
+  .wall label { display: grid; gap: 4px; font-weight: 600; }
+  .wall input, .wall textarea { font: 400 16px var(--font-geist-sans); padding: 10px 12px; border: 1px solid #d8c7b4; border-radius: 10px; background: #fff; } /* 16px stops iOS zooming in on focus */
+  .wall fieldset { border: 0; } legend { font-weight: 600; margin-bottom: 4px; }
+  .wall #things { display: flex; flex-wrap: wrap; gap: 6px; }
+  .wall #things label { display: block; font-size: 24px; }
+  .wall #things input { position: absolute; opacity: 0; }
+  .wall #things span { display: grid; place-items: center; min-width: 48px; min-height: 48px; padding: 4px 8px; border: 2px solid #eadccb; border-radius: 12px; cursor: pointer; background: #fff; }
+  .wall #things input:checked + span { border-color: #c4492f; background: #fff1e8; }
+  .wall #things input:focus-visible + span { outline: 2px solid #2b2420; }
+  .wall button { min-height: 48px; padding: 10px; font: 700 16px var(--font-geist-sans); color: #fff; background: #c4492f; border: 0; border-radius: 12px; cursor: pointer; }
+  .wall .status { min-height: 1.2em; font-size: 14px; }
+  .wall .hint { color: #8a6d55; font-size: 13px; }
+  /* Phones: the panel becomes a bottom sheet so the cloud stays visible above it. */
+  @media (max-width: 640px) {
+    .wall .panel { left: 0; right: 0; top: auto; bottom: 0; width: auto; max-height: 72%; border-radius: 18px 18px 0 0; padding: 14px 16px calc(16px + env(safe-area-inset-bottom)); }
+    .wall .scene { top: 26%; } /* center the cloud in the space above the sheet */
+    .wall .panel h1 { font-size: 22px; }
+    .wall .card { width: 150px; margin-left: -75px; font-size: 13px; }
+    .wall .deco { font-size: 34px; } .wall .deco img { width: 48px; height: 48px; }
+  }
+  .wall .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+
+<script>
+  // ponytail: CSS 3D billboards, no three.js. Fine for a few hundred items; move to WebGL if the wall gets into the thousands.
+  // Array, not object: JS sorts the numeric key '67' first, which made the picker default to 67.
+  const THING_LIST = [['pizza', '🍕'], ['brain', '🧠'], ['moai', '🗿'], ['skull', '💀'], ['phone', '📱'], ['67', '67']];
+  const THINGS = Object.fromEntries(THING_LIST);
+  const PIZZAS = Array.from({ length: 17 }, (_, i) => `/pizza_1f355 (${i + 2}).png`);
+  const scene = document.getElementById('scene');
+  const viewport = document.getElementById('viewport');
+  const R = Math.min(innerWidth, innerHeight) * 0.75;
+  const items = [];
+  let rx = -8, ry = 0, drag = null;
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // A random point inside a sphere, biased outward so the middle doesn't clump.
+  const spot = () => {
+    const u = Math.random(), v = Math.random(), r = R * Math.cbrt(0.25 + 0.75 * Math.random());
+    const th = 2 * Math.PI * u, ph = Math.acos(2 * v - 1);
+    return [r * Math.sin(ph) * Math.cos(th), r * Math.cos(ph) * 0.7, r * Math.sin(ph) * Math.sin(th)];
+  };
+  const add = el => { scene.appendChild(el); items.push({ el, p: spot(), phase: Math.random() * 6.28 }); };
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  function deco(i) {
+    const el = document.createElement('div');
+    el.className = 'deco';
+    if (i % 3 === 0) el.innerHTML = `<img src="${encodeURI(PIZZAS[i % PIZZAS.length])}" alt="">`;
+    else if (i % 7 === 1) { el.classList.add('txt'); el.textContent = '67'; }
+    else el.textContent = THING_LIST[i % 5][1];
+    add(el);
+  }
+  function card(m) {
+    const el = document.createElement('div');
+    el.className = 'card';
+    el.innerHTML = `<div class="t">${THINGS[m.thing] ?? '🍕'}</div>${esc(m.msg)}${m.name ? `<b>${esc(m.name)}</b>` : ''}`;
+    add(el);
+    document.getElementById('list').insertAdjacentHTML('beforeend', `<li>${esc(m.msg)}${m.name ? `, ${esc(m.name)}` : ''}</li>`);
+  }
+  for (let i = 0; i < 42; i++) deco(i);
+
+  function frame(t) {
+    if (!drag && !still) ry += 0.04;
+    scene.style.transform = `translateZ(${-R * 1.15}px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    for (const it of items) {
+      const bob = still ? 0 : Math.sin(t / 1400 + it.phase) * 12;
+      it.el.style.transform = `translate3d(${it.p[0]}px, ${it.p[1] + bob}px, ${it.p[2]}px) rotateY(${-ry}deg) rotateX(${-rx}deg)`;
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  viewport.addEventListener('pointerdown', e => { drag = [e.clientX, e.clientY, rx, ry]; viewport.setPointerCapture(e.pointerId); });
+  viewport.addEventListener('pointermove', e => {
+    if (!drag) return;
+    ry = drag[3] + (e.clientX - drag[0]) * 0.25;
+    rx = Math.max(-60, Math.min(60, drag[2] - (e.clientY - drag[1]) * 0.25));
+  });
+  viewport.addEventListener('pointerup', () => { drag = null; });
+
+  // Panel show/hide, so phones can see the whole cloud.
+  const panel = document.getElementById('panel');
+  const toggle = document.getElementById('toggle');
+  function setPanel(open) {
+    panel.classList.toggle('collapsed', !open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? 'Hide' : 'Show';
+  }
+  toggle.addEventListener('click', () => setPanel(panel.classList.contains('collapsed')));
+
+  // Wall data and the form.
+  const form = document.getElementById('form');
+  const status = document.getElementById('status');
+  document.getElementById('things').innerHTML = THING_LIST.map(([k, v], i) =>
+    `<label><input type="radio" name="thing" value="${k}" ${i ? '' : 'checked'}><span aria-label="${k}">${v}</span></label>`).join('');
+
+  fetch('/api/wall').then(r => r.json()).then(d => {
+    d.messages.forEach(card);
+    if (d.open) {
+      form.hidden = false;
+      document.getElementById('when').textContent = d.messages.length ? `${d.messages.length} on the wall so far.` : 'Be the first one on the wall.';
+    }
+  }).catch(() => { document.getElementById('when').textContent = "Couldn't load the wall. Try again in a bit."; });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    status.textContent = 'Pinning...';
+    const body = Object.fromEntries(new FormData(form));
+    const r = await fetch('/api/wall', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) { status.textContent = d.error || 'Something went wrong.'; return; }
+    card(d);
+    items[items.length - 1].el.classList.add('mine');
+    form.msg.value = '';
+    status.textContent = "You're on the wall. Yours has the red outline.";
+    if (matchMedia('(max-width: 640px)').matches) setPanel(false); // show the cloud on phones
+  });
+</script>
+</Layout>
