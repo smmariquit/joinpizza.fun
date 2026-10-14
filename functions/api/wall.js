@@ -1,9 +1,9 @@
 // Yap wall API for joinpizza.fun/wall.
 // GET  -> { open, opensAt, messages: [{ id, name, msg, thing }] }
 // POST { code, name, msg, thing } -> adds a message once the wall is open and the code matches.
-// The code is the WALL_CODE secret, shown on the closing slide at Hack & Yap. Messages live in D1 (CLICKS binding, table `wall`).
+// The code is the WALL_CODE secret, shown on the slides all through Hack & Yap. Messages live in D1 (CLICKS binding, table `wall`).
 
-const OPENS_AT = '2026-10-17T17:00:00+08:00'; // the word goes up at awards; WALL_OPENS_AT overrides (local testing, opening early)
+const OPENS_AT = '2026-10-17T13:30:00+08:00'; // doors open, the wall stays open from here on; WALL_OPENS_AT overrides (local testing)
 const opensAt = env => new Date(env.WALL_OPENS_AT || OPENS_AT);
 const THINGS = ['pizza', 'brain', 'moai', 'skull', 'phone', '67'];
 const json = (body, status = 200) => Response.json(body, { status, headers: { 'cache-control': 'no-store' } });
@@ -16,7 +16,7 @@ export async function onRequestGet({ env }) {
 }
 
 export async function onRequestPost({ request, env }) {
-  if (Date.now() < opensAt(env).getTime()) return json({ error: 'The wall opens at the end of Hack & Yap.' }, 403);
+  if (Date.now() < opensAt(env).getTime()) return json({ error: 'The wall opens when Hack & Yap starts.' }, 403);
 
   let body;
   try { body = await request.json(); } catch { return json({ error: 'Bad request.' }, 400); }
