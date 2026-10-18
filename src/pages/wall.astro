@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 // Yap wall: pizzas, brainrot and messages from Hack & Yap floating in a CSS 3D cloud. Data: functions/api/wall.js.
 ---
 
-<Layout title="The Yap Wall | Pizza & Friends" description="Messages from Hack & Yap, floating in a cloud of pizza.">
+<Layout title="The Yap Wall | Pizza & Friends" description="Messages and photos from Hack & Yap, floating in a cloud of pizza.">
 <main id="main-content" class="wall">
   <div class="viewport" id="viewport" aria-hidden="true"><div class="scene" id="scene"></div></div>
 
@@ -13,13 +13,14 @@ import Layout from '../layouts/Layout.astro';
       <button type="button" class="toggle" id="toggle" aria-expanded="true" aria-controls="panel-body">Hide</button>
     </div>
     <div class="body" id="panel-body">
-    <p id="intro">Everyone who was at <b>Hack &amp; Yap</b> gets to leave something here. There's a secret word on the screen all through the event. Type it in, pick a thing, and pin a message in the pizza cloud. It stays up after.</p>
-    <p class="when" id="when">Opens Sat, Oct 17 at 1:30 PM, when the doors open.</p>
+    <p id="intro">Messages and photos from <b>Hack &amp; Yap</b> on Oct 17. If you were there, you can still pin a message or a photo in the pizza cloud. You need the secret word that was on the screen during the event.</p>
+    <p class="when" id="when">Loading the wall...</p>
 
     <form id="form" hidden>
       <label>The word from the event <input name="code" autocomplete="off" required maxlength="40"></label>
       <label>Your name (optional) <input name="name" maxlength="30"></label>
-      <label>Your message <textarea name="msg" required maxlength="140" rows="3"></textarea></label>
+      <label>Your message <textarea name="msg" maxlength="140" rows="3"></textarea></label>
+      <label>Add a photo (optional) <input type="file" name="photo" accept="image/*"></label>
       <fieldset><legend>Pick a thing</legend><div id="things"></div></fieldset>
       <button type="submit">Pin it</button>
       <p class="status" id="status" role="status"></p>
@@ -44,6 +45,7 @@ import Layout from '../layouts/Layout.astro';
   .wall .card { width: 190px; margin-left: -95px; padding: 10px 12px; background: #fffdf8; border-radius: 12px; box-shadow: 0 6px 18px rgba(80,50,20,.18);
           font: 15px/1.35 var(--font-geist-sans); }
   .wall .card .t { font-size: 26px; line-height: 1; }
+  .wall .card img { display: block; width: 100%; height: 110px; margin-top: 6px; object-fit: cover; border-radius: 8px; }
   .wall .card b { display: block; margin-top: 6px; font: 600 12px var(--font-geist-mono); color: #8a6d55; }
   .wall .panel { position: absolute; left: 16px; top: 16px; width: min(360px, calc(100% - 32px)); max-height: calc(100% - 32px); overflow: auto;
            padding: 18px 20px; background: rgba(255,253,248,.92); border-radius: 16px; box-shadow: 0 10px 30px rgba(80,50,20,.15); }
@@ -58,6 +60,7 @@ import Layout from '../layouts/Layout.astro';
   .wall form { margin-top: 12px; display: grid; gap: 10px; font: 14px var(--font-geist-sans); }
   .wall label { display: grid; gap: 4px; font-weight: 600; }
   .wall input, .wall textarea { font: 400 16px var(--font-geist-sans); padding: 10px 12px; border: 1px solid #d8c7b4; border-radius: 10px; background: #fff; } /* 16px stops iOS zooming in on focus */
+  .wall input[type=file] { min-width: 0; } /* its default width pushed the form past the panel */
   .wall fieldset { border: 0; } legend { font-weight: 600; margin-bottom: 4px; }
   .wall #things { display: flex; flex-wrap: wrap; gap: 6px; }
   .wall #things label { display: block; font-size: 24px; }
@@ -66,6 +69,7 @@ import Layout from '../layouts/Layout.astro';
   .wall #things input:checked + span { border-color: #c4492f; background: #fff1e8; }
   .wall #things input:focus-visible + span { outline: 2px solid #2b2420; }
   .wall button { min-height: 48px; padding: 10px; font: 700 16px var(--font-geist-sans); color: #fff; background: #c4492f; border: 0; border-radius: 12px; cursor: pointer; }
+  .wall button:disabled { opacity: .6; cursor: progress; }
   .wall .status { min-height: 1.2em; font-size: 14px; }
   .wall .hint { color: #8a6d55; font-size: 13px; }
   /* Phones: the panel becomes a bottom sheet so the cloud stays visible above it. */
@@ -112,9 +116,12 @@ import Layout from '../layouts/Layout.astro';
   function card(m) {
     const el = document.createElement('div');
     el.className = 'card';
-    el.innerHTML = `<div class="t">${THINGS[m.thing] ?? '🍕'}</div>${esc(m.msg)}${m.name ? `<b>${esc(m.name)}</b>` : ''}`;
+    // ponytail: the thumbnail is the full photo (1600px max). Upload a second small version if the wall gets slow to load.
+    // tabindex -1: the cloud is aria-hidden, so keyboard and screen reader users get the photo link in the list below instead.
+    const pic = m.photo ? `<a href="${esc(m.photo)}" target="_blank" rel="noopener" tabindex="-1"><img src="${esc(m.photo)}" alt="${esc(m.msg || 'Photo from Hack & Yap')}" loading="lazy"></a>` : '';
+    el.innerHTML = `<div class="t">${THINGS[m.thing] ?? '🍕'}</div>${esc(m.msg)}${pic}${m.name ? `<b>${esc(m.name)}</b>` : ''}`;
     add(el);
-    document.getElementById('list').insertAdjacentHTML('beforeend', `<li>${esc(m.msg)}${m.name ? `, ${esc(m.name)}` : ''}</li>`);
+    document.getElementById('list').insertAdjacentHTML('beforeend', `<li>${esc(m.msg || 'A photo')}${m.name ? `, ${esc(m.name)}` : ''}${m.photo ? ` <a href="${esc(m.photo)}" target="_blank" rel="noopener">Open photo</a>` : ''}</li>`);
   }
   for (let i = 0; i < 42; i++) deco(i);
 
@@ -129,7 +136,11 @@ import Layout from '../layouts/Layout.astro';
   }
   requestAnimationFrame(frame);
 
-  viewport.addEventListener('pointerdown', e => { drag = [e.clientX, e.clientY, rx, ry]; viewport.setPointerCapture(e.pointerId); });
+  viewport.addEventListener('pointerdown', e => {
+    if (e.target.closest('a')) return; // pointer capture would swallow the click on a photo
+    drag = [e.clientX, e.clientY, rx, ry];
+    viewport.setPointerCapture(e.pointerId);
+  });
   viewport.addEventListener('pointermove', e => {
     if (!drag) return;
     ry = drag[3] + (e.clientX - drag[0]) * 0.25;
@@ -158,19 +169,44 @@ import Layout from '../layouts/Layout.astro';
     if (d.open) {
       form.hidden = false;
       document.getElementById('when').textContent = d.messages.length ? `${d.messages.length} on the wall so far.` : 'Be the first one on the wall.';
-    }
+    } else document.getElementById('when').textContent = "The wall isn't open yet.";
   }).catch(() => { document.getElementById('when').textContent = "Couldn't load the wall. Try again in a bit."; });
+
+  // Shrink to 1600px on the long side and re-encode as JPEG. Redrawing on a canvas also drops EXIF, GPS included.
+  async function shrink(file) {
+    const img = await createImageBitmap(file, { imageOrientation: 'from-image' });
+    const s = Math.min(1, 1600 / Math.max(img.width, img.height));
+    const c = document.createElement('canvas');
+    c.width = Math.round(img.width * s);
+    c.height = Math.round(img.height * s);
+    const ctx = c.getContext('2d');
+    ctx.fillStyle = '#fff'; // transparent PNGs would turn black as JPEG
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.drawImage(img, 0, 0, c.width, c.height);
+    const blob = await new Promise(res => c.toBlob(res, 'image/jpeg', 0.85));
+    if (!blob) throw new Error('toBlob failed');
+    return blob;
+  }
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
+    const btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; // no double posts while a photo shrinks and uploads
     status.textContent = 'Pinning...';
-    const body = Object.fromEntries(new FormData(form));
-    const r = await fetch('/api/wall', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+    const body = new FormData(form);
+    const file = form.photo.files[0];
+    body.delete('photo');
+    if (file) {
+      try { body.set('photo', await shrink(file), 'photo.jpg'); }
+      catch { status.textContent = "Couldn't read that photo. Try a JPEG or PNG."; btn.disabled = false; return; }
+    }
+    const r = await fetch('/api/wall', { method: 'POST', body }).finally(() => { btn.disabled = false; });
     const d = await r.json().catch(() => ({}));
     if (!r.ok) { status.textContent = d.error || 'Something went wrong.'; return; }
     card(d);
     items[items.length - 1].el.classList.add('mine');
     form.msg.value = '';
+    form.photo.value = '';
     status.textContent = "You're on the wall. Yours has the red outline.";
     if (matchMedia('(max-width: 640px)').matches) setPanel(false); // show the cloud on phones
   });
