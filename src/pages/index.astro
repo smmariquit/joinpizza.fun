@@ -14,9 +14,15 @@ const irlFiles = fs.readdirSync(irlDir)
 .filter(f => /\.webp$/i.test(f)) // photos only: no videos in the marquee (performance + dedup)
 .sort(() => 0.5 - Math.random()); // shuffle for variety
 
-// Hack & Yap Episode 2 card hides after this (build time + inline script for stale deploys)
-const EVENT_END = new Date('2026-10-17T18:30:00+08:00');
-const showEvent = new Date() < EVENT_END;
+// Hack & Yap: Anti-Brainrot recap photos (public/hack-and-yap, 4:3 so nothing gets cropped)
+const RECAP_PHOTOS = [
+ ['01', 'A speaker in an orange shirt and maroon cap flashes a peace sign while talking into a mic, in front of a slide that reads "IM COMING AFTER YOUR JOB", with the audience in the foreground.'],
+ ['07', 'A presenter with curly hair and glasses smiles into a mic during a demo, with a weekly calendar app projected behind them.'],
+ ['10', 'Attendees chat and laugh in a group in front of a lettered "WORKSPACE" wall.'],
+ ['06', 'A speaker in a blue suit talks into a mic with one arm raised, while a person in a black cap sits nearby.'],
+ ['08', 'A presenter wearing a long blonde wig speaks into a mic during a pitch.'],
+ ['09', 'A participant lounges on the floor and grins while talking into a mic.'],
+];
 ---
 
 <Layout>
@@ -32,18 +38,15 @@ const showEvent = new Date() < EVENT_END;
  Unexpectedly a tech community! From dinner meetups to Discord calls, we make cool stuff and try not to take it too seriously.
  </p>
 
- {showEvent && (
- <aside class="event-card" id="event-card" aria-labelledby="event-title">
+ <aside class="event-card" aria-labelledby="event-title">
  <h2 id="event-title" class="event-title">Hack &amp; Yap: Anti-Brainrot</h2>
- <p class="event-meta">Sat, Oct 17, 1:30 to 6:30 PM at Zero-Ten Park, Makati</p>
- <a class="cta-primary" href="https://luma.com/ekf47d40" target="_blank" rel="noopener noreferrer">Save a seat</a>
- <p class="event-links"><a href="/hackathon">Hackathon primer</a> and <a href="/speakers">Speaker primer</a></p>
+ <p class="event-meta">62 people checked in at Zero-Ten Park in Makati on Oct 17 for 11 lightning talks and a pitch-only hackathon. Falcat won, Mamagotchi came second, and Brainrot Alert by Team ATBP came third.</p>
+ <p class="event-meta">The next Hack &amp; Yap is in December, in Makati. Join the <a href="https://discord.gg/TrycsErM4R" target="_blank" rel="noopener noreferrer">Discord</a> to hear about it first.</p>
+ <p class="event-links"><a href="#recap">Photos</a> and the <a href="/wall">Yap Wall</a></p>
  </aside>
- <script is:inline>if (Date.now() > Date.parse('2026-10-17T18:30:00+08:00')) document.getElementById('event-card')?.remove();</script>
- )}
 
  <div class="cta-stack">
- <a class={showEvent ? 'cta-secondary' : 'cta-primary'} href="https://discord.gg/TrycsErM4R" target="_blank" rel="noopener noreferrer">
+ <a class="cta-primary" href="https://discord.gg/TrycsErM4R" target="_blank" rel="noopener noreferrer">
  Join the table
  </a>
  <nav class="social-icons" aria-label="Social media links">
@@ -106,6 +109,23 @@ const showEvent = new Date() < EVENT_END;
  </div>
  </section>
 
+ <!-- Hack & Yap recap -->
+ <section class="activities-section" id="recap" aria-labelledby="recap-title">
+ <h2 id="recap-title" class="section-title">Photos from Hack &amp; Yap</h2>
+ <div class="polaroid-wall recap-photos">
+ {RECAP_PHOTOS.map(([file, alt], i) => (
+ <div class="polaroid" style={{ transform: `rotate(${ROTATIONS[(i + 3) % ROTATIONS.length]}deg)` }}>
+ <div class="tape"></div>
+ <div class="polaroid-image-wrap">
+ <img src={`/hack-and-yap/${file}.webp`} alt={alt} width="1200" height="900" class="polaroid-image" loading="lazy" decoding="async" />
+ </div>
+ </div>
+ ))}
+ </div>
+ <p class="recap-note">Thanks to our partners, GitHub Education and Zero-Ten Park, and to everyone who gave a talk or sent in a pitch. We got 25 pitch submissions for 10 slots.</p>
+ <p class="recap-note">If you were there, you can still pin a message or a photo on the <a href="/wall">Yap Wall</a>. You'll need the word from the event.</p>
+ </section>
+
  <!-- Activities Grid -->
  <section class="activities-section" aria-label="Recent events">
  <h2 class="section-title">What we've been up to</h2>
@@ -138,7 +158,7 @@ const showEvent = new Date() < EVENT_END;
  ) : (
  <img
  src={activity.image}
- alt={activity.title}
+ alt={activity.alt ?? activity.title}
  width="400"
  height="400"
  class="polaroid-image"
