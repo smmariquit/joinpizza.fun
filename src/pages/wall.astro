@@ -69,6 +69,7 @@ import Layout from '../layouts/Layout.astro';
   .wall #things input:checked + span { border-color: #c4492f; background: #fff1e8; }
   .wall #things input:focus-visible + span { outline: 2px solid #2b2420; }
   .wall button { min-height: 48px; padding: 10px; font: 700 16px var(--font-geist-sans); color: #fff; background: #c4492f; border: 0; border-radius: 12px; cursor: pointer; }
+  .wall button:disabled { opacity: .6; cursor: progress; }
   .wall .status { min-height: 1.2em; font-size: 14px; }
   .wall .hint { color: #8a6d55; font-size: 13px; }
   /* Phones: the panel becomes a bottom sheet so the cloud stays visible above it. */
@@ -189,15 +190,17 @@ import Layout from '../layouts/Layout.astro';
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
+    const btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; // no double posts while a photo shrinks and uploads
     status.textContent = 'Pinning...';
     const body = new FormData(form);
     const file = form.photo.files[0];
     body.delete('photo');
     if (file) {
       try { body.set('photo', await shrink(file), 'photo.jpg'); }
-      catch { status.textContent = "Couldn't read that photo. Try a JPEG or PNG."; return; }
+      catch { status.textContent = "Couldn't read that photo. Try a JPEG or PNG."; btn.disabled = false; return; }
     }
-    const r = await fetch('/api/wall', { method: 'POST', body });
+    const r = await fetch('/api/wall', { method: 'POST', body }).finally(() => { btn.disabled = false; });
     const d = await r.json().catch(() => ({}));
     if (!r.ok) { status.textContent = d.error || 'Something went wrong.'; return; }
     card(d);
