@@ -14,7 +14,7 @@
     "clicks:daily": "CLOUDFLARE_ACCOUNT_ID=847a37119fd03f8765b62a6775a6c204 wrangler d1 execute joinpizza-clicks --remote --command \"SELECT date(ts) AS day, link, COUNT(*) AS clicks FROM clicks GROUP BY day, link ORDER BY day DESC\""
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.3.3",
+    "@tailwindcss/vite": "^4.3.4",
     "astro": "^7.3.6",
     "tailwindcss": "^4.3.3"
   }
